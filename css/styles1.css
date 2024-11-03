@@ -1,5 +1,5 @@
 body {
-    background-image: url('img/TU2.png'); /* Check the image path */
+    background-image: url('../img/TU2.png'); /* Check the image path */
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat;
