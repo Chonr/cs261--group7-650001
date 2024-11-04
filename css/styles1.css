@@ -4,14 +4,17 @@ body {
     background-position: center center; 
     background-repeat: no-repeat;
     font-family: 'Noto Serif Thai', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
-    width: 80%; /* กำหนดความกว้างของ container */
-    max-width: 80%; /* จำกัดความกว้างสูงสุด */
-    height: 115vh; /* ตั้งค่าให้ container มีความสูงเท่ากับหน้าจอ */
+    width: 100%; /* ปรับความกว้างของ container */
+    max-width: 80%; /* กำหนดขนาดความกว้างสูงสุด */
+    min-height: 100vh; /* ทำให้ container เต็มความสูงหน้าจอ */
     margin: 0 auto; /* กึ่งกลางซ้ายขวา */
-    padding: 0; /* ไม่มีระยะห่างภายใน */
+    padding: 20px; /* ระยะห่างภายใน container */
     box-sizing: border-box;
 }
 
