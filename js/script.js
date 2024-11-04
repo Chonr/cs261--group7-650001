@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (displayNameElement) {
         const displayName = localStorage.getItem('displayNameTH');
         if (displayName) {
-            displayNameElement.innerText = `${displayName}`;
+            document.querySelectorAll('#displayNameTH').forEach(element => {
+                element.innerText = `${displayName}`;
+            });
         }
     }
     
