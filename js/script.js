@@ -15,6 +15,9 @@ function submitLogin() {
         const messageElement = document.getElementById('message');
         
         if (data.status === true && data.message === 'Success') {
+
+            localStorage.setItem('displayNameTH', data.displayname_th);
+
             window.location.href = 'main.html';
         } else {
             messageElement.innerText = data.message; 
@@ -31,6 +34,14 @@ function submitLogin() {
 }   
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    const displayNameElement = document.getElementById('displayNameTH');
+    if (displayNameElement) {
+        const displayName = localStorage.getItem('displayNameTH');
+        if (displayName) {
+            displayNameElement.innerText = `${displayName}`;
+        }
+    }
     
     if (window.location.pathname.includes('main.html')) {
         const logoutButton = document.querySelector('.logout');
