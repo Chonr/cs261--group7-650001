@@ -66,13 +66,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = 'main.html';
                 }
             });
-        }
+            
+            const exampleButton = document.querySelector('.example');
+            if (exampleButton) {
+                exampleButton.addEventListener('click', function() {
+                    let imageUrl;
+                    if (window.location.pathname.includes('form1.html')) {
+                        imageUrl = '../img/example1.png';
+                    } else if (window.location.pathname.includes('form2.html')) {
+                        imageUrl = '../img/example2.png';
+                    } else if (window.location.pathname.includes('form3.html')) {
+                        imageUrl = '../img/example3.png';
+                    } else if (window.location.pathname.includes('form4.html')) {
+                        imageUrl = '../img/example4.png';
+                    } else if (window.location.pathname.includes('form5.html')) {
+                        imageUrl = '../img/example5.png';
+                    }
 
-        const exampleButton = document.querySelector('.example');
-        if (exampleButton) {
-            exampleButton.addEventListener('click', function() {
-                window.location.href = 'your_example_page.html';
-            });
+                    if (imageUrl) {
+                        window.open(imageUrl, '_blank', 'noopener,noreferrer'); // เปิดภาพในแท็บใหม่
+                    }
+                });
+            }
         }
+   
     }
 });
