@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำรับรองการศึกษาครบหลักสูตร</title>
-    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&display=swap" rel="stylesheet"> <!--import font-->
+    <link rel="stylesheet" href="../css/styles2.css">
 </head>
 <body>
         <!-- Top Bar -->
         <div class="top-bar">
             <div class="top-bar-left">
-                <img src="logo.png" alt="Logo" class="logo">
                 <span class="top-bar-title">ระบบยื่นคำร้อง</span>
             </div>
             <div class="top-bar-right">
-                <span>FirstName LastName</span>
+                <span><p id="displayNameTH"></p></span>
             </div>
         </div>
     
@@ -31,12 +31,14 @@
         <!-- Sidebar -->
         <div class="container">
             <aside class="sidebar">
-                <div class="profile-icon">
-                    <img src="../img/UserProfile.jpg" alt="User Icon">
-                </div>
-                <div class="profile-text">
-                    <p><strong>ยินดีต้อนรับ</strong></p>
-                    <p id="displayNameTH"></p>
+                <div class="profile-info">
+                    <div class="profile-icon">
+                        <img src="../img/UserProfile.jpg" alt="User Icon">
+                    </div>
+                    <div class="profile-text">
+                        <p><strong>ยินดีต้อนรับ</strong></p>
+                        <p id="displayNameTH"></p>
+                    </div>
                 </div>
                 <nav>
                     <ul>
@@ -153,11 +155,14 @@
                
             </div>
             <br>
-            <div class="form-buttons">
+            <div class="buttons">
                 <button type="button" class="cancel">ยกเลิก</button>
-                <button type="submit" class="submit">ดำเนินการต่อ</button>
+                <button class="submit">ดำเนินการต่อ</button>
             </div>
         </form>
     </div>
+
+    <script src="../js/script.js"></script>
+
 </body>
 </html>
