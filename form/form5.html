@@ -10,11 +10,11 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <img src="logo.png" alt="Logo" class="logo">
+            
             <span class="top-bar-title">ระบบยื่นคำร้อง</span>
         </div>
         <div class="top-bar-right">
-            <span>FirstName LastName</span>
+            <span><p id="displayNameTH"></p></span>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             <h3>คำร้องกรณีขาดสอบ</h3>
         </div>
         <div class="breadcrumb-right">
-            <span>หน้าแรก / คำร้องกรณีขาดสอบ</span>
+            <span><a href="main.html">หน้าแรก</a> / <a href="#">คำร้องกรณีขาดสอบ</a></span>
         </div>
     </div>
 
@@ -32,29 +32,43 @@
     <div class="container">
         <aside class="sidebar">
             <div class="profile-info">
-                <p><strong>ยินดีต้อนรับ</strong><br>FirstName LastName</p>
+                <div class="profile-icon">
+                    <img src="../img/UserProfile.jpg" alt="User Icon">
+                </div>
+                <div class="profile-text">
+                    <p><strong>ยินดีต้อนรับ</strong></p>
+                    <p id="displayNameTH"></p>
+                </div>
             </div>
             <nav>
                 <ul>
+                    
                     <li><a href="#">ข้อมูลส่วนตัว</a></li>
+                    <hr>
                     <li>
-                        <a href="#">XXXXXXX</a>
+                        <a href="#">การยื่นคำร้อง</a>
+                        <hr>
                         <ul>
-                            <li><a href="#">xxxxxxxxx</a></li>
-                            <li><a href="#">xxxxxxxxxxxxx</a></li>
-                            <li><a href="#">xxxxxxxxxxxxxxxx</a></li>
+                            <li><a href="#">บันทึกคำร้อง</a></li>
+                            <li><a href="#">สถานะคำร้อง</a></li>
+                            <li><a href="#">ประวัติการยื่นคำร้อง</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">xxxxxxxxx</a></li>
+                    
+                    <li><a href="login.html">ออกจากระบบ</a></li>
                 </ul>
             </nav>
         </aside>
 
         <!-- Main Content -->
         <main>
-            <h2>คำร้องกรณีขาดสอบ</h2>
-            <div class="buttons">
-                <button class="example">ตัวอย่างคำร้อง</button>
+            <div>
+                <div class="info">
+                    <h2>คำร้องกรณีขาดสอบ</h2>
+                    <div class="buttons1">
+                        <button class="example">ตัวอย่างคำร้อง</button>
+                    </div>
+                </div>
             </div>
 
             <section class="form-section">

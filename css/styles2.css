@@ -212,6 +212,7 @@ button.submit {
 button.example {
     background-color: #f1e174;
     color: #fff;
+    margin-left: 40px;
 }
 
 .profile-info {
@@ -230,4 +231,17 @@ button.example {
 .profile-text {
     display: flex;
     flex-direction: column; /* จัดเรียงข้อความในแนวตั้ง */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }

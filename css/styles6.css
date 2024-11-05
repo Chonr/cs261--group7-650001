@@ -212,6 +212,7 @@ button.submit {
 button.example {
     background-color: #f1e174;
     color: #fff;
+    margin-left: 40px;
 }
 
 .form-section {
@@ -369,6 +370,31 @@ button.example {
 .document-check input[type="text"] {
     width: 400px; /* กำหนดความกว้างที่ต้องการ */
     margin-left: 10px; /* ระยะห่างจากข้อความ */
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon img {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-right: 10px; 
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column; /* จัดเรียงข้อความในแนวตั้ง */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: left;
 }
 
 

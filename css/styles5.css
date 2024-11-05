@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Noto Serif Thai', serif;
     background-color: #f0f0f0;
 }
 
@@ -236,6 +236,7 @@ button.submit {
 button.example {
     background-color: #f1e174;
     color: #fff;
+    margin-left: 40px;
 }
 
 .button-container {
@@ -266,4 +267,11 @@ button.example {
 .profile-text {
     display: flex;
     flex-direction: column; /* จัดเรียงข้อความในแนวตั้ง */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: left;
 }
