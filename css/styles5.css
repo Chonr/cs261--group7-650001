@@ -25,7 +25,7 @@ body {
 .top-bar-left {
     display: flex;
     align-items: center;
-    justify-content: center; /* จัดข้อความให้อยู่กึ่งกลางในแนวนอน */
+    justify-content: center;
     background-color: #FFD13F;
     color: #000000;
     padding: 10px 20px;
@@ -78,7 +78,7 @@ body {
 
 .sidebar {
     width: 250px;
-    background: linear-gradient(to top, #C3002F, #FFD13F); /* ไล่สีจากล่างขึ้นบน */
+    background: linear-gradient(to top, #C3002F, #FFD13F);
     color: #000000;
     padding: 20px;
     height: 100vh;
@@ -117,14 +117,6 @@ body {
     font-size: 14px;
 }
 
-/* Main Content */
-main {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-    margin-left: 80px;
-}
-
 /* Breadcrumb */
 .breadcrumb-top-bar {
     display: flex;
@@ -147,7 +139,13 @@ main {
     font-size: 14px; 
 }
 
-
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    margin-left: 80px;
+}
 
 h2 {
     color: #34495e;
@@ -160,12 +158,6 @@ h3 {
     color: #34495e;
 }
 
-.form-section, .address-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 label {
     width: 100%;
     margin-top: 10px;
@@ -173,11 +165,48 @@ label {
     color: #34495e;
 }
 
-input[type="text"], input[type="number"], input[type="email"] {
-    width: calc(50% - 10px);
-    padding: 8px;
-    border: 1px solid #bdc3c7;
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px;
+}
+
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Input group layout */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 40%;
+    padding: 10px;
 }
 
 .buttons {
@@ -198,12 +227,7 @@ button.cancel {
     background-color: #e74c3c;
     color: #fff;
 }
-/*
-button.save {
-    background-color: #7ba5e8;
-    color: #fff;
-}
-*/
+
 button.submit {
     background-color: #2ecc71;
     color: #fff;
@@ -215,11 +239,24 @@ button.example {
     margin-left: 40px;
 }
 
-.profile-info {
+.button-container {
+    text-align: right; 
+    margin-top: 20px; 
+}
+
+.payment-section {
+    display: flex; 
+    justify-content: space-between; 
+  }
+  
+  .payment-column {
+    width: 50%; 
+  }
+
+  .profile-info {
     display: flex;
     align-items: center;
 }
-
 .profile-icon img {
     width: 50px; 
     height: 50px; 
@@ -227,7 +264,6 @@ button.example {
     object-fit: cover; 
     margin-right: 10px; 
 }
-
 .profile-text {
     display: flex;
     flex-direction: column; /* จัดเรียงข้อความในแนวตั้ง */
@@ -238,10 +274,4 @@ button.example {
     align-items: center;
     margin-bottom: 20px;
     justify-content: left;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
 }
