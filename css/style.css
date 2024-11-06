@@ -155,3 +155,26 @@ body, html {
     background-size: cover;
     background-position: center;
 }
+
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-top: 0; /* ไม่มีระยะห่าง */
+}
+
+.input-container {
+    margin-bottom: 20px; /* ระยะห่างระหว่างแต่ละกลุ่ม */
+}
+
+.password-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding-right: 30px; /* เพิ่มพื้นที่ให้ไอคอนดวงตา */
+}

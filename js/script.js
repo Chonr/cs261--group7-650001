@@ -2,6 +2,40 @@ function submitLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+
+    usernameError.innerText = "";
+    passwordError.innerText = "";
+
+    let isValid = true; // ตัวแปรเพื่อตรวจสอบความถูกต้องทั้งหมด
+
+    // ตรวจสอบความยาวของ username
+    if (username.length !== 10) {
+        usernameError.innerText = "Username ต้องมีความยาว 10 ตัวอักษร";
+        usernameError.classList.add("error");  // เพิ่ม class error
+        isValid = false;
+    }else if (username[2] !== '0' || username[3] !== '9') {
+        // ตรวจสอบว่าตัวอักษรที่ 3 เป็น '0' และตัวที่ 4 เป็น '9'
+        usernameError.innerText = "Username ไม่ถูกต้อง";
+        usernameError.classList.add("error"); 
+        isValid = false;
+    } else {
+        usernameError.classList.remove("error");  // เอา class error ออกถ้าถูกต้อง
+    }
+
+    // ตรวจสอบความยาวของ password
+    if (password.length !== 13) {
+        passwordError.innerText = "Password ต้องมีความยาว 13 ตัวอักษร";
+        passwordError.classList.add("error");  // เพิ่ม class error
+        isValid = false;
+    } else {
+        passwordError.classList.remove("error");  // เอา class error ออกถ้าถูกต้อง
+    }
+
+    // ถ้ามี error ให้หยุดการทำงาน
+    if (!isValid) return;
+
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {
@@ -20,15 +54,14 @@ function submitLogin() {
 
             window.location.href = 'main.html';
         } else {
-            messageElement.innerText = data.message; 
+            alert('ไม่พบบัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); 
+
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        const messageElement = document.getElementById('message');
-        if (messageElement) {
-            messageElement.innerText = error.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อ';
-        }
+        alert(error.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อ');
+
     });
 
 }   
