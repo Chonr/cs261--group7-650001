@@ -212,7 +212,19 @@
 
         <div class="form-upload">
             <label for="upload-docs">แนบเอกสาร</label>
-            <input type="file" id="upload-docs" name="upload-docs" multiple>
+            <div id="upload-box" class="upload-box">
+                <input type="file" id="upload-docs" name="upload-docs" multiple style="display: none;">
+                <div id="upload-instructions">
+                    <img src="../img/File_icon.png" alt="File Icon" class="file-icon">
+                    <p>คุณสามารถลากและวางไฟล์ที่นี่เพื่อเพิ่ม หรือ คลิกเพื่อเลือกไฟล์</p>
+                </div>
+                <div class="file-list" id="file-list"></div>
+                
+                <!-- Button for adding files -->
+                <div class="button-container">
+                    <button id="add-file-btn" type="button">เพิ่มไฟล์</button>
+                </div>
+            </div>
         </div>
 
             <div class="buttons">
