@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์มคำขอต่ออายุสมาชิก</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&display=swap" rel="stylesheet"> <!--import font-->
+    <link rel="stylesheet" href="../css/styles2.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            
+            <span class="top-bar-title">ระบบยื่นคำร้อง</span>
+        </div>
+        <div class="top-bar-right">
+            <span><p id="displayNameTH"></p></span>
+        </div>
+    </div>
+
+     <!-- Breadcrumb Top Bar -->
+     <div class="breadcrumb-top-bar">
+        <div class="breadcrumb-left">
+            <h3>หนังสือยินยอมผู้ปกครอง</h3>
+        </div>
+        <div class="breadcrumb-right">
+            <span><a href="main.html">หน้าแรก</a> / <a href="#">หนังสือยินยอมผู้ปกครอง</a></span>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-info">
+                <div class="profile-icon">
+                    <img src="../img/UserProfile.jpg" alt="User Icon">
+                </div>
+                <div class="profile-text">
+                    <p><strong>ยินดีต้อนรับ</strong></p>
+                    <p id="displayNameTH"></p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    
+                    <li><a href="#">ข้อมูลส่วนตัว</a></li>
+                    <hr>
+                    <li>
+                        <a href="#">การยื่นคำร้อง</a>
+                        <hr>
+                        <ul>
+                            <li><a href="#">บันทึกคำร้อง</a></li>
+                            <li><a href="#">สถานะคำร้อง</a></li>
+                            <li><a href="#">ประวัติการยื่นคำร้อง</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="login.html">ออกจากระบบ</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <div>
+                <div class="info">
+                    <h2>หนังสือยินยอมผู้ปกครอง</h2>
+                    <div class="buttons1">
+                        <button class="example">ตัวอย่างคำร้อง</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <label>เขียนที่</label>
+                <input type="text">
+            </div>
+
+            <div>
+                <label for="date">วันที่</label>
+                <input type="date" id="date">
+            </div>
+
+            <div class="form-group1">
+                <div>
+                    <label for="subject">เรื่อง</label>
+                    <input type="text" id="subject">
+                </div>
+                <div>
+                    <label for="sign">เรียน</label>
+                    <input type="text" id="sign">
+                </div>
+            </div>
+    
+            <div class="form-group2">
+                <label>ข้าพเจ้า</label>
+                <input type="radio" name="prefix" value="mr"> นาย
+                <input type="radio" name="prefix" value="ms"> นาง
+                <input type="radio" name="prefix" value="miss"> นางสาว
+                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+                <span for="parent1">เป็นผู้ปกครองของ</span>
+            </div>
+        
+            <div class="form-group-inline">
+                <label for="student">นักศึกษา</label>
+                <input type="radio" name="student_prefix" value="mr"> นาย
+                <input type="radio" name="student_prefix" value="ms"> นาง
+                <input type="radio" name="student_prefix" value="miss"> นางสาว
+                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+            </div>
+
+            <div class="form-group-inline1">
+                <label for="student-id">เลขทะเบียน</label>
+                <input type="text" id="student-id">
+            </div>
+            
+            <div class="form-group3">
+                <div>
+                    <label for="faculty">นักศึกษาคณะ</label>
+                    <input type="text" id="faculty">
+                </div>
+                <div>
+                    <label for="major">สาขาวิชา</label>
+                    <input type="text" id="major">
+                </div>
+                <div>
+                    <label for="year">ชั้นปีที่</label>
+                    <select id="year">
+                        <option>เลือกชั้นปี</option>
+                        <option value="1">ชั้นปีที่ 1</option>
+                        <option value="2">ชั้นปีที่ 2</option>
+                        <option value="3">ชั้นปีที่ 3</option>
+                        <option value="4">ชั้นปีที่ 4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group4">
+                <label>มีความสัมพันธ์กับนักศึกษา โดยเป็น</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group5">
+                <label>ยินยอมให้</label>
+                <input type="radio" name="consent_prefix" value="mr"> นาย
+                <input type="radio" name="consent_prefix" value="ms"> นาง
+                <input type="radio" name="consent_prefix" value="miss"> นางสาว
+                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+            </div>
+
+            <div class="form-group-reason">
+                <div><label><input type="checkbox" name="reason" value="ลาออก"> ลาออก</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ขอผ่อนผันค่าลงทะเบียน"> ผ่อนผันค่าลงทะเบียน</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ลาพักการศึกษา"> ลาพักการศึกษา</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ขอลาออกสภาพนักศึกษา"> ขอลาออกสภาพนักศึกษา</label></div> 
+                <div><label><input type="checkbox" name="reason" value="อื่น ๆ"> อื่น ๆ</label></div> 
+            </div>
+
+            <div class="form-group6">
+                <label>เนื่องจาก (ระบุเหตุผล)</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group7">
+                <label for="sign">ลงชื่อ</label>
+                <input type="text" id="sign">
+                <span>ผู้ปกครองนักศึกษา</span>
+            </div>
+
+            <div class="form-upload">
+                <label for="upload-docs">แนบเอกสาร</label>
+                <input type="file" id="upload-docs" name="upload-docs" multiple>
+            </div>
+
+            <div class="buttons">
+                <button class="cancel">ยกเลิก</button>
+                <!--<button class="save">บันทึก</button>-->
+                <button class="submit">ดำเนินการต่อ</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>

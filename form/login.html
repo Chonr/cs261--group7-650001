@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <div class="header">
+                <img src="../img/logo02.jpg" alt="Thammasat University Logo" class="logo">
+            </div>
+            
+            <div class="login-container">
+                <h1>Login</h1>
+                <form id="loginForm">
+                    <div class="input-container">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Username">
+                        <div id="usernameError" class="error"></div>
+                    </div>
+                    
+                    <div class="input-container">
+                        <label for="password">Password</label>
+                        <div class="password-group">
+                            <input type="password" id="password" placeholder="Password">
+                            <span id="togglePassword" class="toggle-password"><i class="fas fa-eye"></i></span>
+                        </div>
+                        <div id="passwordError" class="error"></div>
+                    </div>
+                    
+                    <a href="#" class="forgot-password">Forget password?</a>
+                    <button type="button" onclick="submitLogin()">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src="../img/TU.jpg" class="background">
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

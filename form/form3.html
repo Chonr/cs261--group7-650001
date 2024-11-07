@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำรับรองการศึกษาครบหลักสูตร</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&display=swap" rel="stylesheet"> <!--import font-->
+    <link rel="stylesheet" href="../css/styles3.css">
+</head>
+<body>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <span class="top-bar-title">ระบบยื่นคำร้อง</span>
+            </div>
+            <div class="top-bar-right">
+                <span><p id="displayNameTH"></p></span>
+            </div>
+        </div>
+    
+         <!-- Breadcrumb Top Bar -->
+         <div class="breadcrumb-top-bar">
+            <div class="breadcrumb-left">
+                <h3>คำรับรองการศึกษาครบหลักสูตร</h3>
+            </div>
+            <div class="breadcrumb-right">
+                <span><a href="main.html">หน้าแรก</a> / <a href="#">คำรับรองการศึกษาครบหลักสูตร</a></span>
+            </div>
+        </div>
+    
+        <!-- Sidebar -->
+        <div class="container">
+            <aside class="sidebar">
+                <div class="profile-info">
+                    <div class="profile-icon">
+                        <img src="../img/UserProfile.jpg" alt="User Icon">
+                    </div>
+                    <div class="profile-text">
+                        <p><strong>ยินดีต้อนรับ</strong></p>
+                        <p id="displayNameTH"></p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">ข้อมูลส่วนตัว</a></li>
+                        <li>
+                            <a href="#">การยื่นคำร้อง</a>
+                            <hr>
+                            <ul>
+                                <li><a href="#">บันทึกคำร้อง</a></li>
+                                <li><a href="#">สถานะคำร้อง</a></li>
+                                <li><a href="#">ประวัติการยื่นคำร้อง</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="login.html">ออกจากระบบ</a></li>
+                    </ul>
+                </nav>
+            </aside>
+             
+            <!-- Main Content -->
+        <main>
+            <div>
+                <div class="info">
+                    <h2>คำรับรองการศึกษาครบหลักสูตร</h2>
+                    <div class="buttons1">
+                        <button class="example">ตัวอย่างคำร้อง</button>
+                    </div>
+                </div>
+            </div>
+        <form>
+            
+            <div class="form-section">
+                <label for="academic-term">ซึ่งคาดว่าจะจบในภาค</label>
+                <select id="academic-term">
+                    <option value="">เลือกภาค</option>
+                    <option value="1">ภาคการศึกษาที่ 1</option>
+                    <option value="2">ภาคการศึกษาที่ 2</option>
+                </select>
+
+                <label for="academic-year">ปีการศึกษา</label>
+                <select id="academic-year">
+                    <option value="">เลือกปีการศึกษา</option>
+                    <option value="2566">2566</option>
+                    <option value="2567">2567</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label>
+                    <input type="checkbox"> ได้ตรวจสอบเอกสารที่แนบมาแล้ว ขอรับรองว่า
+                </label>
+            </div>
+
+            <div class="form-section">
+                <label>คำนำหน้า</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="title" value="mr"> นาย</label>
+                    <label><input type="radio" name="title" value="mrs"> นาง</label>
+                    <label><input type="radio" name="title" value="ms"> นางสาว</label>
+                </div>
+                <label for="full-name">ชื่อ-นามสกุล</label>
+                <input type="text" id="full-name" placeholder="กรอกชื่อ-นามสกุล">
+
+                <label for="student-id">เลขทะเบียน</label>
+                <input type="text" id="student-id" placeholder="กรอกเลขทะเบียน">
+
+                <label for="birthdate">เกิดวันที่</label>
+                <input type="date" id="birthdate">
+            </div>
+
+            <div class="form-section">
+                <label>ได้ศึกษาลักษณะวิชาต่าง ๆ ครบตามเงื่อนไขของหลักสูตร</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="course" value="major"> สาขาวิชาเอก</label>
+                    <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาเอก">
+                    <br>
+                    <label><input type="checkbox" name="course" value="minor"> สาขาวิชาโท</label>
+                    <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาโท">
+                    <br>
+                    <label><input type="checkbox" name="course" value="elective"> เลือกเสรี</label>
+                    <input type="text" class="course-name" placeholder="กรอกชื่อวิชาเลือกเสรี">
+                </div>
+            </div>
+
+            <div class="form-section2">
+                <div class="signature-box">
+                    <label for="major-head-signature">ลงนาม</label>
+                    <input type="text" id="major-head-signature" placeholder="ลงนาม">
+                    <span class="signature-label">หัวหน้าสาขาวิชา (เอก)</span>
+                </div>
+
+                <div class="signature-box">
+                    <label for="minor-head-signature">ลงนาม</label>
+                    <input type="text" id="minor-head-signature" placeholder="ลงนาม">
+                    <span class="signature-label">หัวหน้าสาขาวิชา (โท)</span>
+                </div>
+                
+            </div>
+            
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="minor-head-signature">ลงนาม</label>
+                    <input type="text" id="minor-head-signature" placeholder="ลงนาม">
+                    <span class="signature-label">หัวหน้าสาขาวิชา (โท)</span>
+                </div>
+                
+            </div>
+
+            <div class="form-section2">
+
+                <div class="signature-box">
+                    <label for="note">หมายเหตุ</label>
+                    <textarea id="note" rows="5"></textarea>
+                </div>
+                
+                <div class="signature-box">
+                    <label for="note">หมายเหตุ</label>
+                    <textarea id="note" rows="5"></textarea>
+                </div>
+                
+            </div>
+
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="applicant-signature">ลงชื่อผู้ขอแจ้งจบ</label>
+                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ">   
+                </div>
+            </div>
+
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="submission-date">วันที่ยื่น</label>
+                    <input type="text" id="asubmission-date">   
+                </div>
+            </div>
+
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="contact-address">ที่อยู่ที่ติดต่อได้รวดเร็ว</label>
+                    <input type="text" id="contact-address"  placeholder="กรอกที่อยู่">   
+                </div>
+            </div>
+
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="email">อีเมล</label>
+                    <input type="email" id="email"  placeholder="กรอกอีเมล">   
+                </div>
+            </div>
+
+            <div class="form-section3">
+            
+                <div class="signature-box">
+                    <label for="phone">โทรศัพท์</label>
+                    <input type="tel" id="phone" placeholder="กรอกเบอร์โทรศัพท์">   
+                </div>
+            </div>
+
+            <br>
+            <div class="buttons">
+                <button type="button" class="cancel">ยกเลิก</button>
+                <button class="submit">ดำเนินการต่อ</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
