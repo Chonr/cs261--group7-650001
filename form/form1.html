@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แบบฟอร์มคำขอต่ออายุสมาชิก</title>
+    <title>แบบฟอร์มคำร้องหนังสือยินยอมผู้ปกครอง</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&display=swap" rel="stylesheet"> <!--import font-->
     <link rel="stylesheet" href="../css/styles2.css">
 </head>
@@ -63,24 +63,19 @@
 
 
         <!-- Main Content -->
-        <main>
+        <main>  
 
-            <div>
-                <div class="info">
-                    <h2>หนังสือยินยอมผู้ปกครอง</h2>
-                    <div class="buttons1">
-                        <button class="example">ตัวอย่างคำร้อง</button>
-                    </div>
+            <div class="main-header">
+                <h2>หนังสือยินยอมผู้ปกครอง</h2>
+                <div class="buttons1">
+                    <button class="example">ตัวอย่างคำร้อง</button>
                 </div>
             </div>
             
-            <div>
+            <div class="form-section">
                 <label>เขียนที่</label>
                 <input type="text">
-            </div>
-
-            <div>
-                <label for="date">วันที่</label>
+                <span for="date">วันที่</span>
                 <input type="date" id="date">
             </div>
 
@@ -110,10 +105,7 @@
                 <input type="radio" name="student_prefix" value="ms"> นาง
                 <input type="radio" name="student_prefix" value="miss"> นางสาว
                 <input type="text" placeholder="กรอกชื่อและนามสกุล">
-            </div>
-
-            <div class="form-group-inline1">
-                <label for="student-id">เลขทะเบียน</label>
+                <span for="student-id">เลขทะเบียน</span>
                 <input type="text" id="student-id">
             </div>
             
@@ -168,11 +160,7 @@
                 <label for="sign">ลงชื่อ</label>
                 <input type="text" id="sign">
                 <span>ผู้ปกครองนักศึกษา</span>
-            </div>
-
-            <div class="form-upload">
-                <label for="upload-docs">แนบเอกสาร</label>
-                <input type="file" id="upload-docs" name="upload-docs" multiple>
+                
             </div>
 
             <div class="form-upload">
@@ -184,13 +172,16 @@
                         <p>คุณสามารถลากและวางไฟล์ที่นี่เพื่อเพิ่ม หรือ คลิกเพื่อเลือกไฟล์</p>
                     </div>
                     <div class="file-list" id="file-list"></div>
-                    
-                    <!-- Button for adding files -->
+        
+                    <!-- Button for adding files and links -->
                     <div class="button-container">
                         <button id="add-file-btn" type="button">เพิ่มไฟล์</button>
+                        <input type="text" id="link-input" placeholder="กรอกลิงก์ที่ต้องการแนบ" />
+                        <button id="add-link-btn" type="button">แนบลิงก์</button>
                     </div>
                 </div>
             </div>
+
 
             <div class="buttons">
                 <button class="cancel">ยกเลิก</button>
@@ -199,8 +190,10 @@
             </div>
 
         </main>
+
     </div>
 
+    <script src="../js/functionality.js"></script>
     <script src="../js/script.js"></script>
     
 </body>
