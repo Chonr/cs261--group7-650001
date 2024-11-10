@@ -393,3 +393,10 @@ button.example {
 .button-container #add-link-btn:hover {
     background-color: #0056b3;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}

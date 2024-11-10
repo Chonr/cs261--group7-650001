@@ -51,6 +51,7 @@ function submitLogin() {
         if (data.status === true && data.message === 'Success') {
 
             localStorage.setItem('displayNameTH', data.displayname_th);
+            localStorage.setItem('username', data.username);
 
             window.location.href = 'main.html';
         } else {
@@ -122,6 +123,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
+
+        const studentName = document.getElementById('studentName');
+        const studentId = document.getElementById('studentId');
+        const studentNameError = document.getElementById('studentNameError');
+        const studentIdError = document.getElementById('studentIdError');
+
+        // Retrieve stored values
+        const storedDisplayName = localStorage.getItem('displayNameTH');
+        const storedUsername = localStorage.getItem('username');
+
+        // ตรวจสอบ studentName ทันทีเมื่อพิมพ์
+        studentName.addEventListener('input', function() {
+        if (studentName.value !== storedDisplayName) {
+            studentNameError.innerText = "ชื่อและนามสกุลไม่ตรงกัน";
+            studentNameError.classList.add("error");
+        } else {
+            studentNameError.innerText = "";
+            studentNameError.classList.remove("error");
+        }
+        });
+
+        // ตรวจสอบ studentId ทันทีเมื่อพิมพ์
+        studentId.addEventListener('input', function() {
+        if (studentId.value !== storedUsername) {
+            studentIdError.innerText = "เลขทะเบียนไม่ตรงกัน";
+            studentIdError.classList.add("error");
+        } else {
+            studentIdError.innerText = "";
+            studentIdError.classList.remove("error");
+        }
+        });
    
     }
 });

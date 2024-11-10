@@ -99,10 +99,12 @@
                     <label><input type="radio" name="title" value="ms"> นางสาว</label>
                 </div>
                 <label for="full-name">ชื่อ-นามสกุล</label>
-                <input type="text" id="full-name" placeholder="กรอกชื่อ-นามสกุล">
+                <input type="text" id="studentName" placeholder="กรอกชื่อ-นามสกุล">
+                <span id="studentNameError" class="error-message"></span>
 
                 <label for="student-id">เลขทะเบียน</label>
-                <input type="text" id="student-id" placeholder="กรอกเลขทะเบียน">
+                <input type="text" id="studentId" placeholder="กรอกเลขทะเบียน">
+                <span id="studentIdError" class="error-message"></span>
 
                 <label for="birthdate">เกิดวันที่</label>
                 <input type="date" id="birthdate">
@@ -165,7 +167,7 @@
             
                 <div class="signature-box">
                     <label for="applicant-signature">ลงชื่อผู้ขอแจ้งจบ</label>
-                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ">   
+                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ">  
                 </div>
             </div>
 

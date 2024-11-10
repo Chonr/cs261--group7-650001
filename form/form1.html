@@ -104,9 +104,11 @@
                 <input type="radio" name="student_prefix" value="mr"> นาย
                 <input type="radio" name="student_prefix" value="ms"> นาง
                 <input type="radio" name="student_prefix" value="miss"> นางสาว
-                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+                <input type="text" id="studentName" placeholder="กรอกชื่อและนามสกุล">
+                <span id="studentNameError" class="error-message"></span>
                 <span for="student-id">เลขทะเบียน</span>
-                <input type="text" id="student-id">
+                <input type="text" id="studentId">
+                <span id="studentIdError" class="error-message"></span>
             </div>
             
             <div class="form-group3">
