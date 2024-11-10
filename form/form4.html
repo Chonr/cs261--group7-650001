@@ -76,66 +76,70 @@
 
             <div class="form-group">
                 <label for="date">วันที่:</label>
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" required>
             </div>
 
             <div class="form-group">
-                <label for="dean">เรียนคณะบดี:</label>
-                <input type="text" id="dean" name="dean">
+                <label for="dean">เรียนคณบดี:</label>
+                <input type="text" id="dean" name="dean" required>
             </div>
 
             <div class="form-group">
                 <label for="name">ข้าพเจ้า:</label>
-                <input type="text" id="studentName" name="studentName">
+                <input type="text" id="studentName" name="studentName" required>
                 <span id="studentNameError" class="error-message"></span>
                 <label for="studentId">เลขทะเบียน:</label>
-                <input type="text" id="studentId" name="studentId">
+                <input type="text" id="studentId" name="studentId" required>
                 <span id="studentIdError" class="error-message"></span>
             </div>
 
+            <div class="radio-group">
             <div class="form-group">
                 <label for="bachelor">เป็นนักศึกษาปริญญาตรี:</label>
-                <input type="radio" name="degree" value="regular"> ภาคปกติ
-                <input type="radio" name="degree" value="extra"> ภาคพิเศษ
+                <input type="radio" name="degree" value="regular" required> ภาคปกติ
+                <input type="radio" name="degree" value="extra" required> ภาคพิเศษ
                 <label for="advisor">ชื่ออาจารย์ที่ปรึกษา</label>
-                <input type="text" id= "advisor" name="advisor">
+                <input type="text" id= "advisor" name="advisor" required>
+            </div>
             </div>
 
             <div class="form-group">
                 <label for="absence">มีความประสงค์ขอลาพักการศึกษา เนื่องจาก:</label>
-                <input type="text" name="absence">
+                <input type="text" name="absence" required>
             </div>
 
             <div class="form-group">
                 <label for="permission">ดังนั้น จึงขออนุญาตลาพักการศึกษาในภาค:</label>
-                <input type="text" name="permission">
+                <input type="text" name="permission" required>
                 <label for="sum">รวม</label>
-                <input type="text" name="sum">
+                <input type="text" name="sum" required>
                 <label for="semester">ภาคการศึกษา</label>
             </div>
 
+            <div class="radio-group">
             <div class="form-group">
                 <label for="by">โดย</label>
-                <input type="radio" name="degree" value="bachelor"> ไม่ได้จดทะเบียนลักษณะวิชาในภาค
+                <input type="radio" name="regis" value="no_regis" required> ไม่ได้จดทะเบียนลักษณะวิชาในภาค
                 <input type="text" name="permission"> <br>
-                <input type="radio" name="degree" value="extra"> ได้จดทะเบียนเรียนลักษณะวิชาในภาค
+                <input type="radio" name="regis" value="yes_regis" required> ได้จดทะเบียนเรียนลักษณะวิชาในภาค
                 <input type="text" name="permission"> ดังนี้ (เขียนเลขทะเบียน)
                 <input type="text" name="registration">
+            </div>
             </div>
 
             <div class="form-group">
                 <label for="contact">ในระหว่างที่ลาพักนี้จะติดต่อข้าพเจ้าได้ที่</label>
-                <input type="text" name="contact">
+                <input type="text" name="contact" required>
             </div>
 
             <div class="form-group">
                 <label for="telephone">โทรศัพท์</label>
-                <input type="text" name="telephone">
+                <input type="text" name="telephone" required>
             </div>
 
             <div class="form-group">
                 <label for="regards">ขอแสดงความนับถือ</label>
-                <input type="text" name="regards">
+                <input type="text" name="regards" required>
             </div>
 
             <div class="form-container">
@@ -153,11 +157,11 @@
 
             <center> <h3>การชำระค่าธรรมเนียม</h3> </center>
             
+    <div class="radio-group">
         <div class="payment-section">
-
             <div class="payment-column">
             <div class="form-group">
-                <input type="radio" name="degree" value="bachelor"> ได้ชำระค่ารักษาสถานภาพ
+                <input type="radio" name="pay" value="pay" required> ได้ชำระค่ารักษาสถานภาพ
             </div>
 
             <div class="form-group">
@@ -184,7 +188,7 @@
             
         <div class="payment-column">
             <div class="form-group">
-                <input type="radio" name="degree" value="bachelor"> ได้ชำระค่าจดทะเบียนลักษณะวิชา
+                <input type="radio" name="pay" value="pay" required> ได้ชำระค่าจดทะเบียนลักษณะวิชา
             </div>
 
             <div class="form-group">
@@ -207,10 +211,10 @@
                 <label for="date">วันที่</label>
                 <input type="text" name="date">
             </div>
-        </div>
-        
+            </div>
 
         </div>
+    </div>
 
         <div class="form-upload">
             <label for="upload-docs">แนบเอกสาร</label>

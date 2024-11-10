@@ -74,56 +74,60 @@
             
             <div class="form-section">
                 <label>เขียนที่</label>
-                <input type="text">
+                <input type="text" required>
                 <span for="date">วันที่</span>
-                <input type="date" id="date">
+                <input type="date" id="date" required>
             </div>
 
             <div class="form-group1">
                 <div>
                     <label for="subject">เรื่อง</label>
-                    <input type="text" id="subject">
+                    <input type="text" id="subject" required>
                 </div>
                 <div>
                     <label for="sign">เรียน</label>
-                    <input type="text" id="sign">
+                    <input type="text" id="sign" required>
                 </div>
             </div>
     
             <div class="form-group2">
                 <label>ข้าพเจ้า</label>
-                <input type="radio" name="prefix" value="mr"> นาย
-                <input type="radio" name="prefix" value="ms"> นาง
-                <input type="radio" name="prefix" value="miss"> นางสาว
-                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+                <div class="radio-group">
+                <input type="radio" name="prefix" value="mr" required> นาย
+                <input type="radio" name="prefix" value="ms" required> นาง
+                <input type="radio" name="prefix" value="miss" required> นางสาว
+                </div>
+                <input type="text" placeholder="กรอกชื่อและนามสกุล" required>
                 <span for="parent1">เป็นผู้ปกครองของ</span>
             </div>
         
             <div class="form-group-inline">
                 <label for="student">นักศึกษา</label>
-                <input type="radio" name="student_prefix" value="mr"> นาย
-                <input type="radio" name="student_prefix" value="ms"> นาง
-                <input type="radio" name="student_prefix" value="miss"> นางสาว
-                <input type="text" id="studentName" placeholder="กรอกชื่อและนามสกุล">
+                <div class="radio-group">
+                <input type="radio" name="student_prefix" value="mr" required> นาย
+                <input type="radio" name="student_prefix" value="ms" required> นาง
+                <input type="radio" name="student_prefix" value="miss" required> นางสาว
+                </div>
+                <input type="text" id="studentName" placeholder="กรอกชื่อและนามสกุล" required>
                 <span id="studentNameError" class="error-message"></span>
                 <span for="student-id">เลขทะเบียน</span>
-                <input type="text" id="studentId">
+                <input type="text" id="studentId" required>
                 <span id="studentIdError" class="error-message"></span>
             </div>
             
             <div class="form-group3">
                 <div>
                     <label for="faculty">นักศึกษาคณะ</label>
-                    <input type="text" id="faculty">
+                    <input type="text" id="faculty" required>
                 </div>
                 <div>
                     <label for="major">สาขาวิชา</label>
-                    <input type="text" id="major">
+                    <input type="text" id="major" required>
                 </div>
                 <div>
                     <label for="year">ชั้นปีที่</label>
-                    <select id="year">
-                        <option>เลือกชั้นปี</option>
+                    <select id="year" required>
+                        <option value="">เลือกชั้นปี</option>
                         <option value="1">ชั้นปีที่ 1</option>
                         <option value="2">ชั้นปีที่ 2</option>
                         <option value="3">ชั้นปีที่ 3</option>
@@ -134,33 +138,37 @@
 
             <div class="form-group4">
                 <label>มีความสัมพันธ์กับนักศึกษา โดยเป็น</label>
-                <input type="text">
+                <input type="text" required>
             </div>
 
             <div class="form-group5">
                 <label>ยินยอมให้</label>
-                <input type="radio" name="consent_prefix" value="mr"> นาย
-                <input type="radio" name="consent_prefix" value="ms"> นาง
-                <input type="radio" name="consent_prefix" value="miss"> นางสาว
-                <input type="text" placeholder="กรอกชื่อและนามสกุล">
+                <div class="radio-group">
+                <input type="radio" name="consent_prefix" value="mr" required> นาย
+                <input type="radio" name="consent_prefix" value="ms" required> นาง
+                <input type="radio" name="consent_prefix" value="miss" required> นางสาว
+                </div>
+                <input type="text" placeholder="กรอกชื่อและนามสกุล" required>
             </div>
 
             <div class="form-group-reason">
-                <div><label><input type="checkbox" name="reason" value="ลาออก"> ลาออก</label></div> 
-                <div><label><input type="checkbox" name="reason" value="ขอผ่อนผันค่าลงทะเบียน"> ผ่อนผันค่าลงทะเบียน</label></div> 
-                <div><label><input type="checkbox" name="reason" value="ลาพักการศึกษา"> ลาพักการศึกษา</label></div> 
-                <div><label><input type="checkbox" name="reason" value="ขอลาออกสภาพนักศึกษา"> ขอลาออกสภาพนักศึกษา</label></div> 
-                <div><label><input type="checkbox" name="reason" value="อื่น ๆ"> อื่น ๆ</label></div> 
+                <div class="checkbox-group">
+                <div><label><input type="checkbox" name="reason" value="ลาออก" required> ลาออก</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ขอผ่อนผันค่าลงทะเบียน" required> ผ่อนผันค่าลงทะเบียน</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ลาพักการศึกษา" required> ลาพักการศึกษา</label></div> 
+                <div><label><input type="checkbox" name="reason" value="ขอลาออกสภาพนักศึกษา" required> ขอลาออกสภาพนักศึกษา</label></div> 
+                <div><label><input type="checkbox" name="reason" value="อื่น ๆ" required> อื่น ๆ</label></div> 
+                </div>
             </div>
 
             <div class="form-group6">
                 <label>เนื่องจาก (ระบุเหตุผล)</label>
-                <input type="text">
+                <input type="text" required>
             </div>
 
             <div class="form-group7">
                 <label for="sign">ลงชื่อ</label>
-                <input type="text" id="sign">
+                <input type="text" id="sign" required>
                 <span>ผู้ปกครองนักศึกษา</span>
                 
             </div>

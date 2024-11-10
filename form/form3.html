@@ -71,14 +71,14 @@
             
             <div class="form-section">
                 <label for="academic-term">ซึ่งคาดว่าจะจบในภาค</label>
-                <select id="academic-term">
+                <select id="academic-term" required>
                     <option value="">เลือกภาค</option>
                     <option value="1">ภาคการศึกษาที่ 1</option>
                     <option value="2">ภาคการศึกษาที่ 2</option>
                 </select>
 
                 <label for="academic-year">ปีการศึกษา</label>
-                <select id="academic-year">
+                <select id="academic-year" required>
                     <option value="">เลือกปีการศึกษา</option>
                     <option value="2566">2566</option>
                     <option value="2567">2567</option>
@@ -87,39 +87,41 @@
 
             <div class="form-section">
                 <label>
-                    <input type="checkbox"> ได้ตรวจสอบเอกสารที่แนบมาแล้ว ขอรับรองว่า
+                    <div class="checkbox-group">
+                    <input type="checkbox" name="Check_documents" required> ได้ตรวจสอบเอกสารที่แนบมาแล้ว ขอรับรองว่า
+                    </div>
                 </label>
             </div>
 
             <div class="form-section">
                 <label>คำนำหน้า</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="title" value="mr"> นาย</label>
-                    <label><input type="radio" name="title" value="mrs"> นาง</label>
-                    <label><input type="radio" name="title" value="ms"> นางสาว</label>
+                    <label><input type="radio" name="title" value="mr" required> นาย</label>
+                    <label><input type="radio" name="title" value="mrs" required> นาง</label>
+                    <label><input type="radio" name="title" value="ms" required> นางสาว</label>
                 </div>
                 <label for="full-name">ชื่อ-นามสกุล</label>
-                <input type="text" id="studentName" placeholder="กรอกชื่อ-นามสกุล">
+                <input type="text" id="studentName" placeholder="กรอกชื่อ-นามสกุล" required>
                 <span id="studentNameError" class="error-message"></span>
 
                 <label for="student-id">เลขทะเบียน</label>
-                <input type="text" id="studentId" placeholder="กรอกเลขทะเบียน">
+                <input type="text" id="studentId" placeholder="กรอกเลขทะเบียน" required>
                 <span id="studentIdError" class="error-message"></span>
 
                 <label for="birthdate">เกิดวันที่</label>
-                <input type="date" id="birthdate">
+                <input type="date" id="birthdate" required>
             </div>
 
             <div class="form-section">
                 <label>ได้ศึกษาลักษณะวิชาต่าง ๆ ครบตามเงื่อนไขของหลักสูตร</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="course" value="major"> สาขาวิชาเอก</label>
+                    <label><input type="checkbox" name="course" value="major" required> สาขาวิชาเอก</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาเอก">
                     <br>
-                    <label><input type="checkbox" name="course" value="minor"> สาขาวิชาโท</label>
+                    <label><input type="checkbox" name="course" value="minor" required> สาขาวิชาโท</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาโท">
                     <br>
-                    <label><input type="checkbox" name="course" value="elective"> เลือกเสรี</label>
+                    <label><input type="checkbox" name="course" value="elective" required> เลือกเสรี</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อวิชาเลือกเสรี">
                 </div>
             </div>
@@ -143,7 +145,7 @@
             
                 <div class="signature-box">
                     <label for="minor-head-signature">ลงนาม</label>
-                    <input type="text" id="minor-head-signature" placeholder="ลงนาม">
+                    <input type="text" id="minor-head-signature" placeholder="ลงนาม" >
                     <span class="signature-label">หัวหน้าสาขาวิชา (โท)</span>
                 </div>
                 
@@ -167,7 +169,7 @@
             
                 <div class="signature-box">
                     <label for="applicant-signature">ลงชื่อผู้ขอแจ้งจบ</label>
-                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ">  
+                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ" required>  
                 </div>
             </div>
 
@@ -175,7 +177,7 @@
             
                 <div class="signature-box">
                     <label for="submission-date">วันที่ยื่น</label>
-                    <input type="text" id="asubmission-date">   
+                    <input type="text" id="asubmission-date" required>   
                 </div>
             </div>
 
@@ -183,7 +185,7 @@
             
                 <div class="signature-box">
                     <label for="contact-address">ที่อยู่ที่ติดต่อได้รวดเร็ว</label>
-                    <input type="text" id="contact-address"  placeholder="กรอกที่อยู่">   
+                    <input type="text" id="contact-address"  placeholder="กรอกที่อยู่" required>   
                 </div>
             </div>
 
@@ -191,7 +193,7 @@
             
                 <div class="signature-box">
                     <label for="email">อีเมล</label>
-                    <input type="email" id="email"  placeholder="กรอกอีเมล">   
+                    <input type="email" id="email"  placeholder="กรอกอีเมล" required>   
                 </div>
             </div>
 
@@ -199,7 +201,7 @@
             
                 <div class="signature-box">
                     <label for="phone">โทรศัพท์</label>
-                    <input type="tel" id="phone" placeholder="กรอกเบอร์โทรศัพท์">   
+                    <input type="tel" id="phone" placeholder="กรอกเบอร์โทรศัพท์" required>   
                 </div>
             </div>
 

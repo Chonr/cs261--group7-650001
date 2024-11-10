@@ -157,3 +157,86 @@ document.addEventListener('DOMContentLoaded', function() {
    
     }
 });
+
+function validateForm() {
+    const inputs = document.querySelectorAll('input[required], select[required], input[type="checkbox"][required], input[type="radio"][required]');
+    let isValid = true;
+
+    // ลบข้อความผิดพลาดเก่าที่ไม่ได้เกี่ยวข้องกับกลุ่มที่มีปัญหา
+    document.querySelectorAll('.error-message').forEach(error => {
+        // ให้ลบเฉพาะ error ที่ไม่เกี่ยวข้องกับกลุ่มที่มีการตรวจสอบในครั้งนี้
+        error.remove();
+    });
+
+    // ตรวจสอบช่อง input ที่มี attribute required
+    inputs.forEach(input => {
+        // ตรวจสอบช่อง text และ select
+        if ((input.type === 'text' || input.tagName.toLowerCase() === 'select' || input.type === 'tel' || input.type === 'email') && input.value.trim() === '') {
+            showError(input, 'กรุณากรอกข้อมูลในช่องนี้');
+            isValid = false;
+        }
+
+        // ตรวจสอบช่อง checkbox
+        if (input.type === 'checkbox') {
+            const checkboxes = document.querySelectorAll(`input[name="${input.name}"][required]`);
+            const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            if (!isChecked) {
+                showCheckboxError(input, 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก');
+                isValid = false;
+            }
+        }
+
+        // ตรวจสอบช่อง radio
+        if (input.type === 'radio') {
+            const radioGroup = document.querySelectorAll(`input[name="${input.name}"][required]`);
+            const isRadioSelected = Array.from(radioGroup).some(radio => radio.checked);
+            if (!isRadioSelected) {
+                showRadioError(input, 'กรุณาเลือกตัวเลือก');
+                isValid = false;
+            }
+        }
+    });
+
+    return isValid;
+}
+
+// ฟังก์ชันสำหรับแสดงข้อความผิดพลาดใต้แต่ละช่อง
+function showError(element, message) {
+    const errorMessage = document.createElement('span');
+    errorMessage.className = 'error-message';
+    errorMessage.style.color = 'red';
+    errorMessage.textContent = message;
+    element.classList.add('error');
+    element.insertAdjacentElement('afterend', errorMessage);
+}
+
+// ฟังก์ชันสำหรับแสดงข้อความ error สำหรับ checkbox group
+function showCheckboxError(element, message) {
+    const checkboxGroup = document.querySelector(`input[name="${element.name}"]`).closest('.checkbox-group');
+    if (!checkboxGroup.querySelector('.error-message')) {
+        const errorMessage = document.createElement('span');
+        errorMessage.className = 'error-message';
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = message;
+        checkboxGroup.appendChild(errorMessage); // แสดงข้อความผิดพลาดใต้กลุ่ม checkbox
+    }
+}
+
+// ฟังก์ชันสำหรับแสดงข้อความ error สำหรับ radio group
+function showRadioError(element, message) {
+    const radioGroup = document.querySelector(`input[name="${element.name}"]`).closest('.radio-group');
+    if (!radioGroup.querySelector('.error-message')) {
+        const errorMessage = document.createElement('span');
+        errorMessage.className = 'error-message';
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = message;
+        radioGroup.appendChild(errorMessage); // แสดงข้อความผิดพลาดใต้กลุ่ม radio
+    }
+}
+
+// เพิ่ม event listener ให้กับปุ่ม submit
+document.querySelector('.submit').addEventListener('click', function(event) {
+    if (!validateForm()) {
+        event.preventDefault(); // หยุดการส่งฟอร์มถ้าไม่ผ่านการตรวจสอบ
+    }
+});

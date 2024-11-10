@@ -77,23 +77,23 @@
                 
                 <div class="form-groupdate">
                     <label>วันที่</label>
-                    <input type="date">
+                    <input type="date" required>
                 </div>
             
                 <div class="form-group">
                     <label>เรียน ท่านคณบดี</label>
-                    <input type="text" placeholder="ระบุชื่อคณบดี">
+                    <input type="text" placeholder="ระบุชื่อคณบดี" required>
                 </div>
             
                 <div class="form-group inline-fields">
                     <div class="field">
                         <label>ข้าพเจ้า</label>
-                        <input type="text" id="studentName" placeholder="ระบุชื่อของคุณ">
+                        <input type="text" id="studentName" placeholder="ระบุชื่อของคุณ" required>
                         <span id="studentNameError" class="error-message"></span>
                     </div>
                     <div class="field">
                         <label>เลขทะเบียน</label>
-                        <input type="text" id="studentId" placeholder="ระบุเลขทะเบียน">
+                        <input type="text" id="studentId" placeholder="ระบุเลขทะเบียน" required>
                         <span id="studentIdError" class="error-message"></span>
                     </div>
                 </div>
@@ -102,57 +102,57 @@
                 <div class="form-group inline-fields">
                     <div class="field">
                         <label>เป็นนักศึกษาปริญญา</label>
-                            <input type="text" placeholder="ระดับปริญญา">
+                            <input type="text" placeholder="ระดับปริญญา" required>
                     </div>
                     <div class="field">
                         <label>คณะ</label>
-                        <input type="text" placeholder="ชื่อคณะ">
+                        <input type="text" placeholder="ชื่อคณะ" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>ชื่ออาจารย์ที่ปรึกษา</label>
-                    <input type="text" placeholder="ระบุชื่ออาจารย์ที่ปรึกษา">
+                    <input type="text" placeholder="ระบุชื่ออาจารย์ที่ปรึกษา" required>
                 </div>
                 
                 <div class="form-group">
                     <label>ขาดสอบวิชา</label>
-                    <input type="text" placeholder="ระบุชื่อวิชา">
+                    <input type="text" placeholder="ระบุชื่อวิชา" required>
                 </div>
             
                 <div class="form-group inline-fields">
                     <div class="field">
                         <label>ซึ่งสอบวันที่</label>
-                        <input type="date">
+                        <input type="date" required>
                     </div>
                     <div class="field">
                         <label>ชื่ออาจารย์ผู้สอน</label>
-                        <input type="text" placeholder="ระบุชื่ออาจารย์ผู้สอน">
+                        <input type="text" placeholder="ระบุชื่ออาจารย์ผู้สอน" required>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label>สาเหตุการขาดสอบ</label>
-                    <input type="text" placeholder="ระบุสาเหตุ">
+                    <input type="text" placeholder="ระบุสาเหตุ" required>
                 </div>
             
                 <div class="form-group">
                     <label>และได้แนบเอกสาร</label>
                     <div class="radio-group">
                         <div class="radio-item">
-                            <input type="radio" id="medical_receipt" name="attached_documents" value="medical_receipt">
+                            <input type="radio" id="medical_receipt" name="attached_documents" value="medical_receipt" required>
                             <label for="medical_receipt">สำเนาใบเสร็จค่ารักษาพยาบาล</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="medical_certificate" name="attached_documents" value="medical_certificate">
+                            <input type="radio" id="medical_certificate" name="attached_documents" value="medical_certificate" required>
                             <label for="medical_certificate">ใบรับรองแพทย์</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="registration_card" name="attached_documents" value="registration_card">
+                            <input type="radio" id="registration_card" name="attached_documents" value="registration_card" required>
                             <label for="registration_card">สำเนาเอกสารบัตรจดทะเบียน</label>
                         </div>
                         <div class="radio-item">
-                            <input type="radio" id="other" name="attached_documents" value="other">
+                            <input type="radio" id="other" name="attached_documents" value="other" required>
                             <label for="other">อื่นๆ</label>
                             <input type="text" placeholder="โปรดระบุ" style="display: inline; width: auto; margin-left: 10px;">
                         </div>
@@ -166,7 +166,7 @@
             
                 <div class="custom-form-group">
                     <label>ขอแสดงความนับถือ</label>
-                    <input type="text" placeholder="ระบุชื่อของคุณ">
+                    <input type="text" placeholder="ระบุชื่อของคุณ" required>
                 </div>
                 
                 <!-- เส้นแบ่งข้อความ -->
