@@ -53,7 +53,7 @@ function submitLogin() {
             localStorage.setItem('displayNameTH', data.displayname_th);
             localStorage.setItem('username', data.username);
 
-            window.location.href = 'main.html';
+            window.location.href = '../form/main.html';
         } else {
             alert('ไม่พบบัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); 
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             logoutButton.addEventListener('click', function() {
                 if (confirm('คุณต้องการออกจากระบบหรือไม่?')) {
                     document.querySelectorAll('input').forEach(input => input.value = '');
-                    window.location.href = 'login.html';
+                    window.location.href = '../login.html';
                 }
             });
         }
