@@ -105,15 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 exampleButton.addEventListener('click', function() {
                     let imageUrl;
                     if (window.location.pathname.includes('form1.html')) {
-                        imageUrl = '../img/example5.png';
+                        imageUrl = '../img/example1.png';
                     } else if (window.location.pathname.includes('form2.html')) {
-                        imageUrl = '../img/example4.png';
+                        imageUrl = '../img/example2.png';
                     } else if (window.location.pathname.includes('form3.html')) {
                         imageUrl = '../img/example3.png';
                     } else if (window.location.pathname.includes('form4.html')) {
-                        imageUrl = '../img/example2.png';
+                        imageUrl = '../img/example4.png';
                     } else if (window.location.pathname.includes('form5.html')) {
-                        imageUrl = '../img/example1.png';
+                        imageUrl = '../img/example5.png';
                     }
 
                     if (imageUrl) {
