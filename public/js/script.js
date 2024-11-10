@@ -53,7 +53,7 @@ function submitLogin() {
             localStorage.setItem('displayNameTH', data.displayname_th);
             localStorage.setItem('username', data.username);
 
-            window.location.href = '../form/main.html';
+            window.location.href = 'form/main.html';
         } else {
             alert('ไม่พบบัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); 
 
@@ -77,6 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.innerText = `${displayName}`;
             });
         }
+    }
+
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    if (togglePassword) {
+        togglePassword.addEventListener('click', function() {
+            // ตรวจสอบประเภทของ input ว่าตอนนี้เป็น password หรือ text
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text'; // เปลี่ยนเป็น type text เพื่อแสดงรหัสผ่าน
+                togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>'; // เปลี่ยนไอคอนเป็นซ่อนรหัสผ่าน
+            } else {
+                passwordInput.type = 'password'; // เปลี่ยนกลับเป็น type password เพื่อซ่อนรหัสผ่าน
+                togglePassword.innerHTML = '<i class="fas fa-eye"></i>'; // เปลี่ยนไอคอนเป็นแสดงรหัสผ่าน
+            }
+        });
     }
     
     if (window.location.pathname.includes('main.html')) {
