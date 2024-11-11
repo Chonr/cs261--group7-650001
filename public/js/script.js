@@ -250,9 +250,3 @@ function showRadioError(element, message) {
     }
 }
 
-// เพิ่ม event listener ให้กับปุ่ม submit
-document.querySelector('.submit').addEventListener('click', function(event) {
-    if (!validateForm()) {
-        event.preventDefault(); // หยุดการส่งฟอร์มถ้าไม่ผ่านการตรวจสอบ
-    }
-});
