@@ -1,4 +1,98 @@
+let loginAttempts = 0; // ตัวแปรนับจำนวนครั้งที่ล็อกอินผิดพลาด
+let isLocked = false; // สถานะการล็อกบัญชี
+let lockCountdown = null; // ตัวแปรเก็บ interval สำหรับการนับถอยหลัง
+let remainingTime = 0; // เวลาที่เหลือสำหรับการล็อก
+let lockDuration = 30; // ระยะเวลาล็อกเริ่มต้น (วินาที)
+
+// ฟังก์ชันเรียกใช้เมื่อโหลดหน้าเว็บ
+document.addEventListener('DOMContentLoaded', () => {
+    const messageElement = document.getElementById('message');
+    const storedLockEndTime = localStorage.getItem('lockEndTime');
+    const currentTime = Date.now();
+
+    if (storedLockEndTime && currentTime < storedLockEndTime) {
+        // ยังคงล็อกอยู่
+        remainingTime = Math.ceil((storedLockEndTime - currentTime) / 1000);
+        isLocked = true;
+
+        messageElement.innerHTML = `บัญชีของคุณถูกล็อก <span id="lockTimer">${remainingTime}</span> วินาที`;
+        messageElement.style.color = "red";
+
+        startCountdown(); // เริ่มนับถอยหลัง
+    }
+});
+
+function handleLoginAttempt(success) {
+    const messageElement = document.getElementById('message');
+
+    if (isLocked) {
+        alert("บัญชีของคุณถูกล็อก โปรดลองใหม่ในภายหลัง");
+        return false;
+    }
+
+    if (!success) {
+        loginAttempts++;
+
+        if (loginAttempts >= 5) {
+            // ล็อกบัญชีเมื่อผิดพลาดเกิน 5 ครั้ง
+            isLocked = true;
+            remainingTime = lockDuration; // ตั้งค่าระยะเวลาล็อก
+            const lockEndTime = Date.now() + remainingTime * 1000; // เวลาสิ้นสุดการล็อก
+            localStorage.setItem('lockEndTime', lockEndTime); // บันทึกเวลาสิ้นสุดใน LocalStorage
+
+            messageElement.innerHTML = `บัญชีของคุณถูกล็อก <span id="lockTimer">${remainingTime}</span> วินาที`;
+            messageElement.style.color = "red";
+
+            startCountdown(); // เริ่มนับถอยหลัง
+        } else {
+            // แสดงข้อความ "ล็อกอินผิดพลาด" และเปลี่ยนสี
+            messageElement.innerHTML = `<span>ล็อกอินผิดพลาด</span> คุณเหลือโอกาสอีก <span>${5 - loginAttempts}</span> ครั้ง`;
+            messageElement.style.color = "red";
+        }
+        return false;
+    } else {
+        if (isLocked) {
+            alert("บัญชีของคุณถูกล็อก โปรดลองใหม่ในภายหลัง");
+            return false;
+        } else {
+            loginAttempts = 0; // รีเซ็ตตัวนับเมื่อสำเร็จ
+            lockDuration = 30; // รีเซ็ตระยะเวลาล็อกเป็นค่าเริ่มต้น
+            localStorage.removeItem('lockEndTime'); // ลบข้อมูลการล็อกใน LocalStorage
+            messageElement.innerText = ""; // ลบข้อความแจ้งเตือน
+            return true;
+        }
+    }
+}
+
+function startCountdown() {
+    const messageElement = document.getElementById('message');
+
+    if (lockCountdown) {
+        clearInterval(lockCountdown); // ป้องกันการซ้อนของตัวจับเวลา
+    }
+
+    lockCountdown = setInterval(() => {
+        remainingTime--;
+        if (remainingTime <= 0) {
+            clearInterval(lockCountdown);
+            lockCountdown = null;
+            isLocked = false;
+            loginAttempts = 0; // รีเซ็ตจำนวนครั้งที่พยายามล็อกอิน
+            lockDuration += 30; // เพิ่มระยะเวลาล็อกครั้งถัดไปอีก 10 วินาที
+            messageElement.innerText = ""; // ลบข้อความเมื่อปลดล็อก
+            localStorage.removeItem('lockEndTime'); // ลบข้อมูลการล็อกใน LocalStorage
+        } else {
+            document.getElementById('lockTimer').innerText = remainingTime;
+        }
+    }, 1000);
+}
+
 function submitLogin() {
+    if (isLocked) {
+        alert("บัญชีของคุณถูกล็อก โปรดลองใหม่ในภายหลัง");
+        return;
+    }
+
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -34,7 +128,10 @@ function submitLogin() {
     }
 
     // ถ้ามี error ให้หยุดการทำงาน
-    if (!isValid) return;
+    if (!isValid) {
+        handleLoginAttempt(false);
+        return;
+    }
 
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
@@ -55,7 +152,7 @@ function submitLogin() {
 
             window.location.href = 'form/main.html';
         } else {
-            alert('ไม่พบบัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'); 
+            handleLoginAttempt(false);
 
         }
     })
