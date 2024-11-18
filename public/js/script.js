@@ -204,6 +204,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ปุ่ม status และ main navigation
+    const statusButton = document.getElementById('statusButton');
+    const mainButton = document.getElementById('mainButton');
+
+    if (statusButton) {
+        statusButton.addEventListener('click', function () {
+            window.location.href = 'status.html';
+        });
+    }
+
+    if (mainButton) {
+        mainButton.addEventListener('click', function () {
+            window.location.href = 'main.html';
+        });
+    }
+
     if (['form1.html', 'form2.html', 'form3.html', 'form4.html', 'form5.html'].some(page => window.location.pathname.includes(page))) {
         const cancelButton = document.querySelector('.cancel');
         if (cancelButton) {

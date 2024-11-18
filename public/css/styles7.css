@@ -1,0 +1,210 @@
+/* Background and general styling */
+body {
+    background-image: url('../img/TU2.png'); /* Check the image path */
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    font-family: 'Noto Serif Thai', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 80%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo img {
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon img {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-right: 10px; 
+}
+
+.logout,
+.main {
+    width: 100px;
+    padding: 5px 15px;
+    background-color: #fff;
+    border: 1px solid #000000;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+.logout {
+    position: relative;
+    right: 60px;
+}
+
+.main {
+    margin-left: auto;
+    margin-bottom: 20px;
+    transform: translateX(20px);
+}
+
+.content {
+    background-color: #fff;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 100px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+    padding: 0 100px;
+}
+
+.head h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Request list styling */
+.requests {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.requests h2 {
+    margin-bottom: 0%;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 5px;
+}
+
+.requests ul {
+    list-style: none;
+    padding: 0;
+}
+
+.requests ul li {
+    font-size: 1rem;
+    border-bottom: 1px solid #000;
+}
+
+.requests ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+    height: 60px;
+}
+
+.requests ul li a:hover {
+    background-color: #f0f0f0;
+    color: #a00000;
+}
+
+.requests ul li:last-child {
+    border-bottom: none;
+}
+
+.requests li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    height: 100px; /* กำหนดความสูงของแต่ละช่อง */
+    padding: 0 10px; /* เพิ่มระยะห่างภายใน */
+}
+
+.request-item .title {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ระยะห่างระหว่างข้อความ, จุดสี และปุ่ม EDIT */
+}
+
+/* จุดสถานะสี */
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-green {
+    background-color: green;
+}
+
+.status-red {
+    background-color: red;
+}
+
+/* ปรับปุ่ม EDIT */
+.edit-button {
+    color: #000; /* สีดำ */
+    font-weight: bold; /* ตัวหนา */
+    cursor: pointer; /* แสดงให้รู้ว่ากดได้ */
+    font-size: 0.9rem; /* ขนาดตัวอักษร */
+    border: none; /* ไม่มีเส้นขอบ */
+    background: none; /* ไม่มีพื้นหลัง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    padding: 5px 10px; /* เพิ่มระยะห่างภายใน */
+    border-radius: 5px; /* มุมโค้ง */
+    margin-left: 0px; /* ระยะห่างจากจุดสี */
+    transition: background-color 0.3s; /* เพิ่มเอฟเฟกต์เมื่อ hover */
+    height: 40px; /* กำหนดความสูงของปุ่มให้เหมาะสม */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button:hover {
+    background-color: #f0f0f0; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+}

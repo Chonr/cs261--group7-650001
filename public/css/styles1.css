@@ -51,7 +51,9 @@ header {
     margin-right: 10px; 
 }
 
-.logout {
+.logout,
+.status {
+    width: 100px; /* กำหนดความกว้างเท่ากัน */
     padding: 5px 15px;
     background-color: #fff;
     border: 1px solid #000000;
@@ -59,10 +61,24 @@ header {
     cursor: pointer;
     border-radius: 5px;
     font-size: 0.9rem;
-    margin-top: 5px;
+    display: flex; /* ทำให้ข้อความและไอคอนจัดเรียงในบรรทัดเดียวกัน */
+    align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+    justify-content: center; /* จัดข้อความให้อยู่กลางแนวนอน */
+    gap: 5px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+    box-sizing: border-box; /* รวม padding และ border ในขนาดปุ่ม */
+}
+
+/* ตำแหน่งปุ่ม Logout */
+.logout {
     position: relative;
-    right: 60px;
-    gap: 5px;
+    right: 60px; /* ตำแหน่งคงที่สำหรับ logout */
+}
+
+/* ตำแหน่งปุ่ม Status */
+.status {
+    margin-left: auto; /* ดันปุ่มไปทางขวา */
+    margin-bottom: 20px;
+    transform: translateX(20px); /* เลื่อนปุ่มไปทางขวา */
 }
 
 /* New styles for content wrapper */
@@ -75,11 +91,16 @@ header {
 }
 
 .head {
-    text-align: left;
+    display: flex; /* ใช้ Flexbox สำหรับการจัดวาง */
+    align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
     margin-top: 10px;
-    margin-left: 10px; 
-    padding-left: 100px; /* ระยะห่างจากด้านซ้ายของ container */
-    padding-right: 100px; /* ระยะห่างจากด้านขวาของ container */
+    position: relative; /* ใช้สำหรับการปรับตำแหน่งภายใน */
+    padding: 0 100px; /* ระยะห่างจากด้านซ้ายและขวา */
+}
+
+.head h2 {
+    margin: 0; /* ลบระยะห่างขอบ */
+    font-size: 1.5rem; /* ขนาดตัวอักษรของ h2 */
 }
 
 .banner img {
@@ -128,10 +149,3 @@ header {
 .requests ul li:last-child {
     border-bottom: none;
 }
-
-
-
-
-
-
-
