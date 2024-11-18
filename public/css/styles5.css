@@ -228,6 +228,12 @@ button.cancel {
     color: #fff;
 }
 
+button.save {
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 5px;
+}
+
 button.submit {
     background-color: #2ecc71;
     color: #fff;
