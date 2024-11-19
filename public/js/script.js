@@ -1,128 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const currentPage = window.location.pathname.split("/").pop();
-    const allRequestsKey = "all_requests"; // คีย์ที่ใช้ในการจัดเก็บคำร้องทั้งหมดใน localStorage
-
-    // ตรวจสอบว่าหน้า HTML คือ form หรือ status
-    if (currentPage.startsWith("form")) {
-        // รันโค้ดสำหรับหน้า Form (เช่น form1.html, form2.html, ...)
-        const saveButton = document.querySelector(".save");
-        const submitButton = document.querySelector(".submit");
-        const formType = document.querySelector("title").textContent.trim(); // ดึงประเภทคำร้องจาก title
-        const redirectURL = "status.html"; // URL ของหน้า status ที่จะเปลี่ยนไป
-
-        // ฟังก์ชันสำหรับเพิ่มคำร้องใหม่หรืออัปเดตคำร้องเดิม
-        function updateRequestStatus(status) {
-            const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
-
-            // เพิ่มคำร้องใหม่ใน localStorage โดยไม่แทนที่คำร้องเดิม
-            const count = allRequests.filter(request => request.type === formType).length + 1;
-            allRequests.unshift({
-                type: formType,
-                count: count,
-                title: `คำร้อง: ${formType} (${count})`,
-                status: status,
-            });
-
-            // อัปเดตคำร้องใน localStorage
-            localStorage.setItem(allRequestsKey, JSON.stringify(allRequests));
-
-            // เปลี่ยนหน้าไปที่ status.html
-            window.location.href = redirectURL;
-        }
-
-        // เมื่อกดปุ่ม Save
-        saveButton?.addEventListener("click", () => {
-            updateRequestStatus("status-red"); // บันทึกคำร้องพร้อมสถานะ "red"
-        });
-
-        // เมื่อกดปุ่ม Submit
-        submitButton?.addEventListener("click", () => {
-            updateRequestStatus("status-green"); // ยืนยันคำร้องพร้อมสถานะ "green"
-        });
-
-    } else if (currentPage === "status.html") {
-        // รันโค้ดสำหรับหน้า Status
-        const requestsSection = document.querySelector(".requests");
-        const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
-
-        // เคลียร์คำร้องเก่าจากหน้า HTML
-        requestsSection.innerHTML = `<h2>ติดตามสถานะคำร้อง</h2>`;
-
-        // จัดกลุ่มคำร้องตามประเภท
-        const groupedRequests = {};
-        allRequests.forEach(request => {
-            if (!groupedRequests[request.type]) {
-                groupedRequests[request.type] = [];
-            }
-            groupedRequests[request.type].push(request);
-        });
-
-        // สร้าง HTML ของคำร้องแต่ละประเภท โดยแสดงคำร้องล่าสุดที่บนสุด
-        for (const [type, requests] of Object.entries(groupedRequests)) {
-            // แสดงประเภทคำร้อง
-            const requestGroup = document.createElement("div");
-            requestGroup.className = "request-group";
-
-            // แสดงคำร้องทั้งหมดในประเภทนั้น โดยเริ่มจากคำร้องล่าสุด
-            requests.reverse().forEach(request => {
-                const requestItem = document.createElement("div");
-                requestItem.className = "request-item";
-                requestItem.innerHTML = `
-                    <div class="title">
-                        <span>${request.title}</span>
-                        <div class="status-dot ${request.status}"></div>
-                        ${request.status === 'status-red' ? '<button class="edit-button">EDIT</button>' : ''}
-                    </div>
-                `;
-                requestGroup.appendChild(requestItem);
-
-                // เพิ่มฟังก์ชันลบคำร้องเมื่อกด "EDIT"
-                const editButton = requestItem.querySelector(".edit-button");
-                editButton?.addEventListener("click", () => {
-                    deleteRequest(request, requestItem);  // ลบคำร้องที่คลิก
-                });
-            });
-
-            // เพิ่มกลุ่มคำร้องที่จัดกลุ่มแล้วไปยังหน้า
-            requestsSection.appendChild(requestGroup);
-        }
-
-        // ฟังก์ชันสำหรับลบคำร้องจาก localStorage และหน้าเว็บ
-        function deleteRequest(requestToDelete, requestItemElement) {
-            let allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
-
-            // ลบคำร้องที่ตรงกับข้อมูลที่ต้องการลบ
-            allRequests = allRequests.filter(request => request !== requestToDelete);
-
-            // อัปเดตคำร้องที่เหลือใน localStorage
-            localStorage.setItem(allRequestsKey, JSON.stringify(allRequests));
-
-            // ลบคำร้องจากหน้าเว็บทันที
-            requestItemElement.remove();
-        }
-
-        // ฟังก์ชันสำหรับลบคำร้องทั้งหมด
-        const deleteAllButton = document.createElement("button");
-        deleteAllButton.textContent = "ลบคำร้องทั้งหมด";
-        deleteAllButton.classList.add("delete-all-button");
-        document.body.appendChild(deleteAllButton);
-
-        deleteAllButton.addEventListener("click", () => {
-            // ลบคำร้องทั้งหมดจาก localStorage
-            localStorage.removeItem(allRequestsKey);  // หรือ localStorage.clear(); สำหรับลบทั้งหมด
-
-            // ลบคำร้องทั้งหมดจากหน้าเว็บ
-            const requestsSection = document.querySelector(".requests");
-            requestsSection.innerHTML = `<h2>ติดตามสถานะคำร้อง</h2>`;
-
-            // รีเฟรชหน้าเพื่อโหลดข้อมูลล่าสุด
-            window.location.reload();
-        });
-    }
-});
-
-
-
 
 
 let loginAttempts = 0; // ตัวแปรนับจำนวนครั้งที่ล็อกอินผิดพลาด
@@ -426,49 +301,166 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function validateForm() {
-    const inputs = document.querySelectorAll('input[required], select[required], input[type="checkbox"][required], input[type="radio"][required]');
-    let isValid = true;
+document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.pathname.split("/").pop();
+    const allRequestsKey = "all_requests"; // คีย์ที่ใช้ในการจัดเก็บคำร้องทั้งหมดใน localStorage
 
-    // ลบข้อความผิดพลาดเก่าที่ไม่ได้เกี่ยวข้องกับกลุ่มที่มีปัญหา
-    document.querySelectorAll('.error-message').forEach(error => {
-        // ให้ลบเฉพาะ error ที่ไม่เกี่ยวข้องกับกลุ่มที่มีการตรวจสอบในครั้งนี้
-        error.remove();
-    });
+    // ฟังก์ชันสำหรับตรวจสอบความถูกต้องของฟอร์ม
+    function validateForm() {
+        const inputs = document.querySelectorAll('input[required], select[required], input[type="checkbox"][required], input[type="radio"][required]');
+        let isValid = true;
 
-    // ตรวจสอบช่อง input ที่มี attribute required
-    inputs.forEach(input => {
-        // ตรวจสอบช่อง text และ select
-        if ((input.type === 'text' || input.tagName.toLowerCase() === 'select' || input.type === 'tel' || input.type === 'email') && input.value.trim() === '') {
-            showError(input, 'กรุณากรอกข้อมูลในช่องนี้');
-            isValid = false;
-        }
+        // ลบข้อความผิดพลาดเก่าที่ไม่ได้เกี่ยวข้องกับกลุ่มที่มีปัญหา
+        document.querySelectorAll('.error-message').forEach(error => {
+            error.remove();
+        });
 
-        // ตรวจสอบช่อง checkbox
-        if (input.type === 'checkbox') {
-            const checkboxes = document.querySelectorAll(`input[name="${input.name}"][required]`);
-            const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-            if (!isChecked) {
-                showCheckboxError(input, 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก');
+        // ตรวจสอบช่อง input ที่มี attribute required
+        inputs.forEach(input => {
+            // ตรวจสอบช่อง text และ select
+            if ((input.type === 'text' || input.tagName.toLowerCase() === 'select' || input.type === 'tel' || input.type === 'email') && input.value.trim() === '') {
+                showError(input, 'กรุณากรอกข้อมูลในช่องนี้');
                 isValid = false;
             }
-        }
 
-        // ตรวจสอบช่อง radio
-        if (input.type === 'radio') {
-            const radioGroup = document.querySelectorAll(`input[name="${input.name}"][required]`);
-            const isRadioSelected = Array.from(radioGroup).some(radio => radio.checked);
-            if (!isRadioSelected) {
-                showRadioError(input, 'กรุณาเลือกตัวเลือก');
-                isValid = false;
+            // ตรวจสอบช่อง checkbox
+            if (input.type === 'checkbox') {
+                const checkboxes = document.querySelectorAll(`input[name="${input.name}"][required]`);
+                const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+                if (!isChecked) {
+                    showCheckboxError(input, 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก');
+                    isValid = false;
+                }
             }
+
+            // ตรวจสอบช่อง radio
+            if (input.type === 'radio') {
+                const radioGroup = document.querySelectorAll(`input[name="${input.name}"][required]`);
+                const isRadioSelected = Array.from(radioGroup).some(radio => radio.checked);
+                if (!isRadioSelected) {
+                    showRadioError(input, 'กรุณาเลือกตัวเลือก');
+                    isValid = false;
+                }
+            }
+        });
+
+        return isValid;
+    }
+
+    // ฟังก์ชันแสดงข้อความผิดพลาด
+    function showError(input, message) {
+        const errorElement = document.createElement('div');
+        errorElement.classList.add('error-message');
+        errorElement.textContent = message;
+        input.closest('div').appendChild(errorElement);
+    }
+
+    function showCheckboxError(input, message) {
+        const errorElement = document.createElement('div');
+        errorElement.classList.add('error-message');
+        errorElement.textContent = message;
+        input.closest('div').appendChild(errorElement);
+    }
+
+    function showRadioError(input, message) {
+        const errorElement = document.createElement('div');
+        errorElement.classList.add('error-message');
+        errorElement.textContent = message;
+        input.closest('div').appendChild(errorElement);
+    }
+
+    // ตรวจสอบว่าเป็นหน้า Form หรือ Status
+    if (currentPage.startsWith("form")) {
+        const saveButton = document.querySelector(".save");
+        const submitButton = document.querySelector(".submit");
+        const formType = document.querySelector("title").textContent.trim(); // ดึงประเภทคำร้องจาก title
+        const redirectURL = "status.html"; // URL ของหน้า status ที่จะเปลี่ยนไป
+
+        // ฟังก์ชันสำหรับเพิ่มคำร้องใหม่หรืออัปเดตคำร้องเดิม
+        function updateRequestStatus(status) {
+            const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
+            const count = allRequests.filter(request => request.type === formType).length + 1;
+            const timestamp = new Date().toLocaleString();  // ใช้เวลาปัจจุบัน
+            allRequests.unshift({
+                type: formType,
+                count: count,
+                title: `คำร้อง: ${formType} (${count})`,
+                status: status,
+                timestamp: timestamp,  // เก็บเวลาที่บันทึก
+            });
+
+            // อัปเดตคำร้องใน localStorage
+            localStorage.setItem(allRequestsKey, JSON.stringify(allRequests));
+
+            // เปลี่ยนหน้าไปที่ status.html
+            window.location.href = redirectURL;
         }
-    });
 
-    return isValid;
-}
+        // เมื่อกดปุ่ม Save
+        saveButton?.addEventListener("click", () => {
+            updateRequestStatus("status-red"); // บันทึกคำร้องพร้อมสถานะ "red"
+        });
 
+        // เมื่อกดปุ่ม Submit
+        submitButton?.addEventListener("click", () => {
+            if (validateForm()) {
+                updateRequestStatus("status-green"); // ยืนยันคำร้องพร้อมสถานะ "green"
+            }
+        });
+    } else if (currentPage === "status.html") {
+        // รันโค้ดสำหรับหน้า Status (เหมือนเดิม)
+        const requestsSection = document.querySelector(".requests");
+        const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
 
+        requestsSection.innerHTML = `<h2>ติดตามสถานะคำร้อง</h2>`;
 
+        // จัดเรียงคำร้องตาม timestamp (จากใหม่ไปเก่า)
+        allRequests.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));  // เรียงลำดับตามเวลาที่บันทึก
 
+        const groupedRequests = {};
+        allRequests.forEach(request => {
+            if (!groupedRequests[request.type]) {
+                groupedRequests[request.type] = [];
+            }
+            groupedRequests[request.type].push(request);
+        });
 
+        allRequests.forEach(request => {
+            const requestItem = document.createElement("div");
+            requestItem.className = "request-item";
+            requestItem.innerHTML = `
+                <div class="title">
+                    <span>${request.title}</span>
+                    <div class="status-dot ${request.status}"></div>
+                    ${request.status === 'status-red' ? '<button class="edit-button">EDIT</button>' : ''}
+                    <p class="timestamp">บันทึกเมื่อ: ${request.timestamp}</p> <!-- แสดงเวลาที่บันทึกคำร้อง -->
+                </div>
+            `;
+            requestsSection.appendChild(requestItem);
+    
+            // เพิ่มการทำงานเมื่อกดปุ่ม "EDIT"
+            const editButton = requestItem.querySelector(".edit-button");
+            editButton?.addEventListener("click", () => {
+                deleteRequest(request, requestItem);
+            });
+        });
+
+        function deleteRequest(requestToDelete, requestItemElement) {
+            let allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
+            allRequests = allRequests.filter(request => request !== requestToDelete);
+            localStorage.setItem(allRequestsKey, JSON.stringify(allRequests));
+            requestItemElement.remove();
+        }
+
+        const deleteAllButton = document.createElement("button");
+        deleteAllButton.textContent = "ลบคำร้องทั้งหมด";
+        deleteAllButton.classList.add("delete-all-button");
+        document.body.appendChild(deleteAllButton);
+
+        deleteAllButton.addEventListener("click", () => {
+            localStorage.removeItem(allRequestsKey);
+            requestsSection.innerHTML = `<h2>ติดตามสถานะคำร้อง</h2>`;
+            window.location.reload();
+        });
+    }
+});
