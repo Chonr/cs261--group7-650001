@@ -80,12 +80,12 @@
             <section class="form-section">
                 <div class="form-group">
                     <label>เรื่อง</label>
-                    <input type="text" placeholder="กรอกเรื่องที่จะร้องเรียน" required>
+                    <input type="text" id="case" placeholder="กรอกเรื่องที่จะร้องเรียน" required>
                 </div>
 
                 <div class="form-group">
                     <label>เรียน</label>
-                    <input type="text" required>
+                    <input type="text" id="dear" required>
                 </div>
 
                 <div class="form-group">
@@ -115,32 +115,31 @@
                         <option value="4">ปี 4</option>
                     </select>
                     <label>สาขาวิชา</label>
-                    <input type="text" placeholder="กรอกสาขาวิชา" required>
+                    <input type="text" id="branch" placeholder="กรอกสาขาวิชา" required>
                 </div>
             </section>
 
             <section class="address-section">
                 <div class="form-group">
                     <label>ที่อยู่ติดต่อได้เลขที่</label>
-                    <input type="text" placeholder="กรอกที่อยู่ติดต่อ" required>
-
+                    <input type="text" id="address" placeholder="กรอกที่อยู่ติดต่อ" required>
                     <label>แขวง/ตำบล</label>
-                    <input type="text" placeholder="กรอกแขวง/ตำบล" required>
+                    <input type="text" id="district" placeholder="กรอกแขวง/ตำบล" required>
                     <label>เขต/อำเภอ</label>
-                    <input type="text" placeholder="กรอกเขต/อำเภอ" required>
+                    <input type="text" id="county" placeholder="กรอกเขต/อำเภอ" required>
                 </div>
                 <div class="form-group">
                     <label>จังหวัด</label>
-                    <input type="text" placeholder="กรอกจังหวัด" required>
+                    <input type="text" id="province" placeholder="กรอกจังหวัด" required>
                     <label>โทรศัพท์ติดต่อนักศึกษา</label>
-                    <input type="tel" pattern="[0-9]{10}" placeholder="กรอกเบอร์โทรนักศึกษา" required>
+                    <input type="tel" id="studentContact" pattern="[0-9]{10}" placeholder="กรอกเบอร์โทรนักศึกษา" required>
                     <label>โทรศัพท์ติดต่อผู้ปกครอง</label>
-                    <input type="tel" pattern="[0-9]{10}" placeholder="กรอกเบอร์โทรผู้ปกครอง" required>
+                    <input type="tel" id="parentContact" pattern="[0-9]{10}" placeholder="กรอกเบอร์โทรผู้ปกครอง" required>
                 </div>
 
                 <div class="form-group">
                     <label>อาจารย์ที่ปรึกษา</label>
-                    <input type="text" placeholder="กรอกชื่ออาจารย์ที่ปรึกษา" required>
+                    <input type="text" id="advisor" placeholder="กรอกชื่ออาจารย์ที่ปรึกษา" required>
                 </div>
             </section>
             <h3>ประสงค์ที่จะยื่นร้อง</h3>
@@ -152,18 +151,18 @@
                     <label for="option1">จดทะเบียนล่าช้า / เพิ่มล่าช้า</label>
                     <span> </span>
                     <label>ภาคการศึกษาที่</label>
-                    <input type="text" placeholder="ภาคการศึกษา">
+                    <input type="text" id="semester" placeholder="ภาคการศึกษา">
                     <span>/</span>
-                    <input type="text" placeholder="ปีการศึกษา">
+                    <input type="text" id="year" placeholder="ปีการศึกษา">
                 </div>
 
                 <div class="form-group">
                     <label>รหัสวิชา</label>
-                    <input type="text" placeholder="กรอกรหัสวิชา">
+                    <input type="text" id="courseCode" placeholder="กรอกรหัสวิชา">
                     <label>ชื่อวิชา</label>
-                    <input type="text" placeholder="กรอกชื่อวิชา">
+                    <input type="text" id="courseName" placeholder="กรอกชื่อวิชา">
                     <label>Section</label>
-                    <input type="text" placeholder="Section">
+                    <input type="text" id="section" placeholder="Section">
                 </div>
 
                 <div class="form-group">
@@ -171,18 +170,18 @@
                     <label for="option2">ขอถอนวิชา / ถอนรายวิชา (Drop W)</label>
                     <span> </span>
                     <label>ภาคการศึกษาที่</label>
-                    <input type="text" placeholder="ภาคการศึกษา">
+                    <input type="text" id="semester" placeholder="ภาคการศึกษา">
                     <span>/</span>
-                    <input type="text" placeholder="ปีการศึกษา">
+                    <input type="text" id="year" placeholder="ปีการศึกษา">
                 </div>
 
                 <div class="form-group">
                     <label>รหัสวิชา</label>
-                    <input type="text" placeholder="กรอกรหัสวิชา">
+                    <input type="text" id="courseCode" placeholder="กรอกรหัสวิชา">
                     <label>ชื่อวิชา</label>
-                    <input type="text" placeholder="กรอกชื่อวิชา">
+                    <input type="text" id="courseName" placeholder="กรอกชื่อวิชา">
                     <label>Section</label>
-                    <input type="text" placeholder="เลือก Section">
+                    <input type="text" id="section" placeholder="เลือก Section">
                 </div>
 
                 <div class="form-group">
@@ -190,27 +189,27 @@
                     <label for="option3">ขอจดทะเบียนศึกษารายวิชาข้ามหลักสูตร</label>
                     <span></span>
                     <label>ภาคการศึกษาที่</label>
-                    <input type="text" placeholder="กรอกภาคการศึกษา">
+                    <input type="text" id="semester" placeholder="กรอกภาคการศึกษา">
                     <span>/</span>
-                    <input type="text" placeholder="ปีการศึกษา">
+                    <input type="text" id="year" placeholder="ปีการศึกษา">
                 </div>
 
                 <div class="form-group">
                     <label>รหัสวิชา</label>
-                    <input type="text" placeholder="กรอกรหัสวิชา">
+                    <input type="text" id="courseCode" placeholder="กรอกรหัสวิชา">
                     <label>ชื่อวิชา</label>
-                    <input type="text" placeholder="กรอกชื่อวิชา">
+                    <input type="text" id="courseName" placeholder="กรอกชื่อวิชา">
                     <label>Section</label>
-                    <input type="text" placeholder="เลือก Section">
+                    <input type="text" id="section" placeholder="เลือก Section">
                 </div>
 
                 <div class="form-group">
                     <input type="checkbox" name="desire" id="option4" required>
                     <label for="option4">ขอลาพักการศึกษา</label>
                     <label>ตั้งแต่ภาคการศึกษาที่</label>
-                    <input type="text" placeholder="ภาคการศึกษา">
+                    <input type="text" id="semester" placeholder="ภาคการศึกษา">
                     <label>ปีการศึกษา</label>
-                    <input type="text" placeholder="ปีการศึกษา">
+                    <input type="text" id="year" placeholder="ปีการศึกษา">
                 </div>
             </div>
 
@@ -224,7 +223,7 @@
                     <label for="option6">มีภาระหนี้สินคงค้าง</label>
                     <span></span>
                     <label>จำนวน</label>
-                    <input type="number" step="0.01" min="0" placeholder="กรอกจำนวนเงิน">
+                    <input type="number" id="amount" step="0.01" min="0" placeholder="กรอกจำนวนเงิน">
                     <label>บาท</label>
                 </div>
                 </div>
@@ -248,18 +247,18 @@
 
                 <div class="form-group">
                     <label for="reason">เหตุผลที่ยื่นคำร้องเนื่องจาก</label>
-                    <input type="text" id="reason" class="full-width" placeholder="กรอกเหตุผลที่ยื่นคำร้อง" required>
+                    <input type="text" id="argument" class="full-width" placeholder="กรอกเหตุผลที่ยื่นคำร้อง" required>
                 </div>
             </section>
 
             <div class="form-group right-align">
                 <label>ลงชื่อ</label>
-                <input type="text" placeholder="กรอกชื่อและนามสกุล" required>
+                <input type="text" id="studentName" placeholder="กรอกชื่อและนามสกุล" required>
                 <label>นักศึกษา</label>
                 <span></span>
                 <span></span>
                 <label>วันที่ยื่นคำร้อง</label>
-                <input type="text" placeholder="กรอกวันที่ยื่นคำร้อง" required>
+                <input type="text" id="date" placeholder="กรอกวันที่ยื่นคำร้อง" required>
 
             </div>
 

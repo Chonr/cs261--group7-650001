@@ -167,9 +167,11 @@ h3 {
 /* จัดการระยะห่างทั่วไปสำหรับ label และ input */
 /* สไตล์สำหรับ label และ input ทั่วไป */
 label {
-    font-weight: bold;
-    color: #2c3e50;
+    width: 100%;
     margin-top: 10px;
+    font-weight: bold;
+    color: #34495e;
+    white-space: nowrap;
 }
 
 input[type="text"], 
@@ -203,6 +205,26 @@ input[type="date"] {
 .form-section input[type="date"] {
     width: 200px;
     height: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: auto;
+    /* ให้ .form-group ไม่เต็มความกว้าง */
+}
+
+.form-group label {
+    width: auto;
+    font-weight: bold;
 }
 
 /* form-group1 */

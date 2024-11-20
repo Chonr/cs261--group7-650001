@@ -64,7 +64,6 @@
         <!-- Main Content -->
         <main>
             <form>
-             
                 <div>
                     <div class="info">
                         <h2>คำร้องขอลาพักการศึกษา</h2>
@@ -105,23 +104,25 @@
 
             <div class="form-group">
                 <label for="absence">มีความประสงค์ขอลาพักการศึกษา เนื่องจาก:</label>
-                <input type="text" name="absence" required>
+                <input type="text" name="absence" id="absence" required>
             </div>
 
             <div class="form-group">
                 <label for="permission">ดังนั้น จึงขออนุญาตลาพักการศึกษาในภาค:</label>
-                <input type="text" name="permission" required>
+                <input type="text" name="permission" id="permission" required>
                 <label for="sum">รวม</label>
-                <input type="text" name="sum" required>
+                <input type="text" name="sum" id="sum" required>
                 <label for="semester">ภาคการศึกษา</label>
             </div>
 
             <div class="radio-group">
             <div class="form-group">
                 <label for="by">โดย</label>
-                <input type="radio" name="regis" value="no_regis" required> ไม่ได้จดทะเบียนลักษณะวิชาในภาค
-                <input type="text" name="permission"> <br>
-                <input type="radio" name="regis" value="yes_regis" required> ได้จดทะเบียนเรียนลักษณะวิชาในภาค
+                <input type="radio" name="regis" id="regis" value="no_regis" required> ไม่ได้จดทะเบียนลักษณะวิชาในภาค
+                <input type="text" name="permission"> 
+            </div>
+            <div class="form-group">
+                <input type="radio" name="regis" id="regis" value="yes_regis" required> ได้จดทะเบียนเรียนลักษณะวิชาในภาค
                 <input type="text" name="permission"> ดังนี้ (เขียนเลขทะเบียน)
                 <input type="text" name="registration">
             </div>
@@ -129,33 +130,33 @@
 
             <div class="form-group">
                 <label for="contact">ในระหว่างที่ลาพักนี้จะติดต่อข้าพเจ้าได้ที่</label>
-                <input type="text" name="contact" required>
+                <input type="text" name="contact" id="contact" required>
             </div>
 
             <div class="form-group">
                 <label for="telephone">โทรศัพท์</label>
-                <input type="text" name="telephone" required>
+                <input type="text" name="telephone" id="telephone" required>
             </div>
 
             <div class="form-group">
                 <label for="regards">ขอแสดงความนับถือ</label>
-                <input type="text" name="regards" required>
+                <input type="text" name="regards" id="regards" required>
             </div>
 
-            <div class="form-container">
+            <div class="feedback-container">
                 <!-- Section 1: ความคิดเห็นอาจารย์ที่ปรึกษา และ คำสั่งอธิการบดี -->
-                <div class="form-section">
-                    <div class="input-group">
+                
+                    <div class="feedback-box">
                         <label for="advisor-comment">ความคิดเห็นอาจารย์ที่ปรึกษา</label>
                         <textarea id="advisor-comment" name="advisor-comment" rows="5"></textarea>
                     </div>
-                    <div class="input-group">
+                    <div class="feedback-box">
                         <label for="chancellor-comment">คำสั่งอธิการบดี/คณบดี</label>
                         <textarea id="chancellor-comment" name="chancellor-comment" rows="5"></textarea>
                     </div>
-                </div>
+            </div>
 
-            <center> <h3>การชำระค่าธรรมเนียม</h3> </center>
+    <center> <h3>การชำระค่าธรรมเนียม</h3> </center>
             
     <div class="radio-group">
         <div class="payment-section">

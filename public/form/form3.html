@@ -69,7 +69,7 @@
             </div>
         <form>
             
-            <div class="form-section">
+            <div class="form-group">
                 <label for="academic-term">ซึ่งคาดว่าจะจบในภาค</label>
                 <select id="academic-term" required>
                     <option value="">เลือกภาค</option>
@@ -85,20 +85,20 @@
                 </select>
             </div>
 
-            <div class="form-section">
+            <div class="form-group">
                 <label>
                     <div class="checkbox-group">
-                    <input type="checkbox" name="Check_documents" required> ได้ตรวจสอบเอกสารที่แนบมาแล้ว ขอรับรองว่า
+                    <input type="checkbox" name="Check_documents" id="Check_documents" required> ได้ตรวจสอบเอกสารที่แนบมาแล้ว ขอรับรองว่า
                     </div>
                 </label>
             </div>
 
-            <div class="form-section">
+            <div class="form-group">
                 <label>คำนำหน้า</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="title" value="mr" required> นาย</label>
-                    <label><input type="radio" name="title" value="mrs" required> นาง</label>
-                    <label><input type="radio" name="title" value="ms" required> นางสาว</label>
+                    <label><input type="radio" name="title" id="title" value="mr" required> นาย</label>
+                    <label><input type="radio" name="title" id="title" value="mrs" required> นาง</label>
+                    <label><input type="radio" name="title" id="title" value="ms" required> นางสาว</label>
                 </div>
                 <label for="full-name">ชื่อ-นามสกุล</label>
                 <input type="text" id="studentName" placeholder="กรอกชื่อ-นามสกุล" required>
@@ -107,20 +107,34 @@
                 <label for="student-id">เลขทะเบียน</label>
                 <input type="text" id="studentId" placeholder="กรอกเลขทะเบียน" required>
                 <span id="studentIdError" class="error-message"></span>
+            </div>
 
+            <div class="form-group">
                 <label for="birthdate">เกิดวันที่</label>
                 <input type="date" id="birthdate" required>
             </div>
 
-            <div class="form-section">
+            <div class="form-group">
                 <label>ได้ศึกษาลักษณะวิชาต่าง ๆ ครบตามเงื่อนไขของหลักสูตร</label>
+            </div>
+            
                 <div class="checkbox-group">
+                    <div class="form-group">
                     <label><input type="checkbox" name="course" value="major" required> สาขาวิชาเอก</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาเอก">
-                    <br>
+                </div>
+                    
+                <div class="form-group">
                     <label><input type="checkbox" name="course" value="minor" required> สาขาวิชาโท</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาโท">
-                    <br>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" name="course" id="course" value="minor" required> สาขาวิชาโท</label>
+                    <input type="text" class="course-name" placeholder="กรอกชื่อสาขาวิชาโท">
+                </div>
+                    
+                <div class="form-group">
                     <label><input type="checkbox" name="course" value="elective" required> เลือกเสรี</label>
                     <input type="text" class="course-name" placeholder="กรอกชื่อวิชาเลือกเสรี">
                 </div>
@@ -151,58 +165,42 @@
                 
             </div>
 
-            <div class="form-section2">
-
-                <div class="signature-box">
+            <div class="feedback-container">
+                <div class="feedback-box">
                     <label for="note">หมายเหตุ</label>
                     <textarea id="note" rows="5"></textarea>
                 </div>
                 
-                <div class="signature-box">
+                <div class="feedback-box">
                     <label for="note">หมายเหตุ</label>
                     <textarea id="note" rows="5"></textarea>
                 </div>
-                
+            </div>
+            
+            <div class="form-group right-align2">
+                <label for="applicant-signature">ลงชื่อ</label>
+                <input type="text" id="applicant-signature" placeholder="ลงชื่อ" required>  
+                <label for="applicant-signature">ผู้ขอแจ้งจบ</label>
+            </div>
+        
+            <div class="form-group right-align2">
+                <label for="submission-date">วันที่ยื่น</label>
+                <input type="text" id="asubmission-date" required>   
+            </div>
+            
+            <div class="form-group right-align2">
+                <label for="contact-address">ที่อยู่ที่ติดต่อได้รวดเร็ว</label>
+                <input type="text" id="contact-address"  placeholder="กรอกที่อยู่" required>   
+            </div>
+            
+            <div class="form-group right-align2">
+                <label for="email">อีเมล</label>
+                <input type="email" id="email"  placeholder="กรอกอีเมล" required>   
             </div>
 
-            <div class="form-section3">
-            
-                <div class="signature-box">
-                    <label for="applicant-signature">ลงชื่อผู้ขอแจ้งจบ</label>
-                    <input type="text" id="applicant-signature" placeholder="ลงชื่อ" required>  
-                </div>
-            </div>
-
-            <div class="form-section3">
-            
-                <div class="signature-box">
-                    <label for="submission-date">วันที่ยื่น</label>
-                    <input type="text" id="asubmission-date" required>   
-                </div>
-            </div>
-
-            <div class="form-section3">
-            
-                <div class="signature-box">
-                    <label for="contact-address">ที่อยู่ที่ติดต่อได้รวดเร็ว</label>
-                    <input type="text" id="contact-address"  placeholder="กรอกที่อยู่" required>   
-                </div>
-            </div>
-
-            <div class="form-section3">
-            
-                <div class="signature-box">
-                    <label for="email">อีเมล</label>
-                    <input type="email" id="email"  placeholder="กรอกอีเมล" required>   
-                </div>
-            </div>
-
-            <div class="form-section3">
-            
-                <div class="signature-box">
-                    <label for="phone">โทรศัพท์</label>
-                    <input type="tel" id="phone" placeholder="กรอกเบอร์โทรศัพท์" required>   
-                </div>
+            <div class="form-group right-align2">
+                <label for="phone">โทรศัพท์</label>
+                <input type="tel" id="phone" placeholder="กรอกเบอร์โทรศัพท์" required>   
             </div>
 
             <br>
