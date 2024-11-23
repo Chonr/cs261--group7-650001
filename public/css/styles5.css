@@ -448,3 +448,19 @@ button.example {
     display: block;
     margin-top: 5px;
 }
+input[type="text"],
+input[type="date"],
+select {
+    width: auto; /* ปรับให้ความกว้างเป็นอัตโนมัติ */
+    max-width: 200px; /* จำกัดความกว้างสูงสุดของกล่อง */
+    padding: 8px; /* ระยะห่างภายใน */
+    font-size: 16px; /* ขนาดฟอนต์ */
+    border: 1px solid #ccc; /* เส้นขอบ */
+    border-radius: 4px; /* มุมโค้ง */
+    box-sizing: border-box; /* ทำให้ขนาดรวม padding และ border */
+}
+
+/* เลือก dropdown ให้ดูสวยงาม */
+select {
+    background-color: #fff; /* พื้นหลัง */
+}
