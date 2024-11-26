@@ -157,6 +157,8 @@ function submitLogin() {
             handleLoginAttempt(false);
 
         }
+        // ทำการบันทึกข้อมูลผู้ใช้ลงในตาราง students
+        saveUserToDatabase(data);
     })
     .catch(error => {
         console.error('Error:', error);
@@ -164,7 +166,35 @@ function submitLogin() {
 
     });
 
-}   
+}
+
+function saveUserToDatabase(data) {
+    const userDetails = {
+        userName: data.username || 'ไม่ระบุ',
+        type: data.type,
+        engName: data.displayname_en || 'ไม่ระบุ',
+        email: data.email || 'ไม่ระบุ',
+        faculty: data.faculty || 'ไม่ระบุ'
+    };
+
+    fetch('http://localhost:8080/api/group7', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Application-Key': 'TU5ce4207d6fb3085aba32c5a74e72aa711e9e07ad870eb799d80eb6330f460223e6ddf0d1dabcfca1cf64daecc8900a42'
+        },
+        body: JSON.stringify(userDetails)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('User saved successfully!');
+        } else {
+            console.error('Failed to save user to database');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
