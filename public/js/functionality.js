@@ -79,25 +79,22 @@ function updateFileDisplay() {
     }
 }
 
-// Add files to the list when selected
 function handleFileSelection(files) {
-    const newFiles = Array.from(files);
+    const maxFileSize = 25 * 1024 * 1024; // กำหนดขนาดไฟล์สูงสุด 25 MB
+    const newFiles = Array.from(files).filter(file => {
+        if (file.size > maxFileSize) {
+            alert(`ไฟล์ "${file.name}" มีขนาดเกิน 25 MB และจะไม่ถูกเพิ่ม`);
+            return false; // ไม่เพิ่มไฟล์ที่เกินขนาด
+        }
+        return true;
+    });
+
     allFiles = allFiles.concat(newFiles);
     updateFileDisplay();
 }
 
-// Add link to the list
-function addLink() {
-    const url = linkInput.value.trim();
-    if (url) {
-        allFiles.push({
-            type: "link",
-            name: url
-        });
-        linkInput.value = ""; // Clear input field
-        updateFileDisplay();
-    }
-}
+
+
 
 // Event listeners for add file button and drag-and-drop
 addFileBtn.addEventListener("click", () => {
@@ -109,8 +106,7 @@ fileInput.addEventListener("change", () => {
     fileInput.value = ""; // Reset file input for the next selection
 });
 
-// Event listener for add link button
-addLinkBtn.addEventListener("click", addLink);
+
 
 // Drag-and-drop functionality
 uploadBox.addEventListener("dragover", (event) => {

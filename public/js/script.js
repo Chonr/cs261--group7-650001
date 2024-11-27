@@ -568,3 +568,114 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const allRequestsKey = "all_requests"; // คีย์สำหรับเก็บข้อมูลคำร้องใน localStorage
+    const editingRequestKey = "editing_request"; // คีย์สำหรับเก็บคำร้องที่กำลังแก้ไข
+
+    // ฟังก์ชันเก็บข้อมูลจากฟอร์ม
+    function collectFormData() {
+        const formData = {};
+        const inputs = document.querySelectorAll('input, select, textarea');
+
+        inputs.forEach((input) => {
+            if (input.type === "checkbox" || input.type === "radio") {
+                if (input.checked) {
+                    formData[input.name] = input.value;
+                }
+            } else {
+                formData[input.id] = input.value.trim();
+            }
+        });
+
+        return formData;
+    }
+
+    // ฟังก์ชันสำหรับกำหนดหน้าฟอร์มที่เหมาะสม
+    function determineFormPage(formType) {
+        switch (formType) {
+            case "คำร้องฟอร์ม 1":
+                return "form1.html";
+            case "คำร้องฟอร์ม 2":
+                return "form2.html";
+            case "คำร้องฟอร์ม 3":
+                return "form3.html";
+            default:
+                return "form1.html"; // ค่าเริ่มต้น
+        }
+    }
+
+    // ฟังก์ชันสำหรับแก้ไขคำร้อง
+    function editRequest(index, request) {
+        // เก็บข้อมูลคำร้องที่ต้องการแก้ไขใน LocalStorage
+        localStorage.setItem(editingRequestKey, JSON.stringify({ index, ...request }));
+
+        // กำหนดหน้าฟอร์มที่เหมาะสมตามประเภทคำร้อง
+        const formPage = determineFormPage(request.type);
+        window.location.href = formPage; // เปลี่ยนเส้นทางไปยังหน้าฟอร์ม
+    }
+
+    // ฟังก์ชันสำหรับโหลดข้อมูลคำร้องที่กำลังแก้ไข
+    function loadEditingRequest() {
+        const editingRequest = JSON.parse(localStorage.getItem(editingRequestKey));
+        if (editingRequest) {
+            // เติมข้อมูลลงในฟอร์ม
+            document.getElementById("studentName").value = editingRequest.studentName || "";
+            document.getElementById("studentId").value = editingRequest.studentId || "";
+            document.getElementById("faculty").value = editingRequest.faculty || "";
+            document.getElementById("major").value = editingRequest.major || "";
+            document.getElementById("year").value = editingRequest.year || "";
+        }
+    }
+
+    // ฟังก์ชันสำหรับบันทึกข้อมูลที่แก้ไขกลับไปที่ LocalStorage
+    function saveEditedRequest() {
+        const updatedRequest = collectFormData(); // รวบรวมข้อมูลใหม่
+        const editingRequest = JSON.parse(localStorage.getItem(editingRequestKey));
+
+        if (editingRequest) {
+            const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
+            allRequests[editingRequest.index] = { ...editingRequest, ...updatedRequest }; // อัปเดตข้อมูลคำร้อง
+            localStorage.setItem(allRequestsKey, JSON.stringify(allRequests)); // บันทึกกลับไปที่ LocalStorage
+            localStorage.removeItem(editingRequestKey); // ลบข้อมูลคำร้องที่กำลังแก้ไข
+            window.location.href = "status.html"; // เปลี่ยนกลับไปที่หน้าติดตามคำร้อง
+        }
+    }
+
+    // สำหรับหน้า `status.html`
+    if (currentPage === "status.html") {
+        const requestsSection = document.querySelector(".requests");
+        const allRequests = JSON.parse(localStorage.getItem(allRequestsKey)) || [];
+
+        requestsSection.innerHTML = `<h2>ติดตามสถานะคำร้อง</h2>`;
+        allRequests.forEach((request, index) => {
+            const requestItem = document.createElement("div");
+            requestItem.className = "request-item";
+            requestItem.innerHTML = `
+                <div class="title">
+                    <span>${request.title}</span>
+                    <div class="status-dot ${request.status}"></div>
+                    <button class="edit-button" data-index="${index}">EDIT</button>
+                    <p class="timestamp">บันทึกเมื่อ: ${request.timestamp}</p>
+                </div>
+            `;
+            requestsSection.appendChild(requestItem);
+
+            const editButton = requestItem.querySelector(".edit-button");
+            editButton.addEventListener("click", () => {
+                editRequest(index, request); // เรียกฟังก์ชันแก้ไข
+            });
+        });
+    }
+
+    // สำหรับหน้า `form1.html`, `form2.html`, `form3.html` เป็นต้น
+    if (currentPage.startsWith("form")) {
+        loadEditingRequest(); // โหลดข้อมูลคำร้องที่กำลังแก้ไข
+
+        document.querySelector(".submit").addEventListener("click", function () {
+            saveEditedRequest(); // บันทึกข้อมูลคำร้องที่แก้ไข
+        });
+    }
+});
+
