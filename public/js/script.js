@@ -335,6 +335,80 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentPage = window.location.pathname.split("/").pop();
     const allRequestsKey = "all_requests"; // คีย์ที่ใช้ในการจัดเก็บคำร้องทั้งหมดใน localStorage
 
+    function collectFormData() {
+        const formData = {};
+        const inputs = document.querySelectorAll('input[required], select[required], input[type="checkbox"][required], input[type="radio"][required]');
+        
+        inputs.forEach(input => {
+            if (input.type === 'checkbox') {
+                // เก็บค่าของ checkbox เป็นอาร์เรย์ของตัวเลือกที่ถูกเลือก
+                if (input.checked) {
+                    if (input.checked) {
+                        formData[input.name] = input.value;  // เก็บค่า value ของ checkbox ที่ถูกติ๊ก
+                    }
+                }
+            } else if (input.type === 'radio') {
+                // เก็บค่าของ radio ที่ถูกเลือก
+                if (input.checked) {
+                    formData[input.id] = input.value;
+                }
+            } else {
+                // เก็บค่าของ input และ select ปกติ
+                formData[input.id] = input.value.trim();
+            }
+        });
+
+        console.log("Form Data Collected:", formData);
+
+        return formData;
+    }
+
+    function saveFormToDatabase(formData) {
+
+        console.log("Sending data to server:", formData);
+
+        fetch('http://localhost:8080/api/form_data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            console.log("Response Status:", response.status); // ตรวจสอบสถานะการตอบกลับ
+            if (!response.ok) {
+                return response.json().then(error => {
+                    console.error("Error response:", error); // ดูรายละเอียดจาก server ถ้ามีข้อผิดพลาด
+                    alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + (error.message || 'Unknown error'));
+                    throw new Error(error.message || 'Unknown error');
+                });
+            }
+            return response.json(); // แปลง response เป็น json
+        })
+        .then(data => {
+            console.log("Success:", data); // ดูข้อมูลจากการตอบกลับของเซิร์ฟเวอร์
+            alert('บันทึกข้อมูลสำเร็จ');
+        })
+        .catch(error => {
+            console.error('Error:', error); // ตรวจสอบข้อผิดพลาดที่เกิดขึ้นใน catch
+            alert('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์: ' + error.message);
+        });
+    }
+
+    if (currentPage.startsWith("form")) {
+        const submitButton = document.querySelector(".submit");
+
+        submitButton?.addEventListener("click", () => {
+            
+            if (validateForm()) {
+                const formData = collectFormData();
+                console.log("Collected Form Data:", formData); // สำหรับ debug
+                saveFormToDatabase(formData);
+            }
+        });
+    }
+
     // ฟังก์ชันสำหรับตรวจสอบความถูกต้องของฟอร์ม
     function validateForm() {
         const inputs = document.querySelectorAll('input[required], select[required], input[type="checkbox"][required], input[type="radio"][required]');
