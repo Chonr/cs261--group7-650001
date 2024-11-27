@@ -7,13 +7,6 @@ app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ limit: '25mb', extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'yourpassword',
-    database: 'yourdatabase'
-});
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
